@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>テーブルを扱う | NuShell</title>
+    <meta name="generator" content="VuePress 1.7.1">
+    <link rel="icon" href="/icon.png">
+    <meta name="description" content="新しいタイプのシェル。.">
+    <meta name="theme-color" content="#3eaf7c">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    
+    <link rel="preload" href="/assets/css/0.styles.adb6ffce.css" as="style"><link rel="preload" href="/assets/js/app.e39887a6.js" as="script"><link rel="preload" href="/assets/js/23.66326f15.js" as="script"><link rel="preload" href="/assets/js/2.fdae228b.js" as="script"><link rel="preload" href="/assets/js/120.ffbb0954.js" as="script"><link rel="prefetch" href="/assets/js/10.b43b82a2.js"><link rel="prefetch" href="/assets/js/100.597cacfb.js"><link rel="prefetch" href="/assets/js/101.93d0fa21.js"><link rel="prefetch" href="/assets/js/102.6b821fa8.js"><link rel="prefetch" href="/assets/js/103.551f15ef.js"><link rel="prefetch" href="/assets/js/104.53551149.js"><link rel="prefetch" href="/assets/js/105.a2221387.js"><link rel="prefetch" href="/assets/js/106.46d109d2.js"><link rel="prefetch" href="/assets/js/107.98b510fa.js"><link rel="prefetch" href="/assets/js/108.75985867.js"><link rel="prefetch" href="/assets/js/109.6be509e7.js"><link rel="prefetch" href="/assets/js/11.4e283216.js"><link rel="prefetch" href="/assets/js/110.caafcdd0.js"><link rel="prefetch" href="/assets/js/111.3e82c11f.js"><link rel="prefetch" href="/assets/js/112.9fb86069.js"><link rel="prefetch" href="/assets/js/113.eb487395.js"><link rel="prefetch" href="/assets/js/114.f32fccd8.js"><link rel="prefetch" href="/assets/js/115.79587c59.js"><link rel="prefetch" href="/assets/js/116.787c7b35.js"><link rel="prefetch" href="/assets/js/117.c0722799.js"><link rel="prefetch" href="/assets/js/118.b4023b63.js"><link rel="prefetch" href="/assets/js/119.0d234767.js"><link rel="prefetch" href="/assets/js/12.28b0cfed.js"><link rel="prefetch" href="/assets/js/121.27efeeb6.js"><link rel="prefetch" href="/assets/js/122.737a409d.js"><link rel="prefetch" href="/assets/js/123.d1a59fee.js"><link rel="prefetch" href="/assets/js/124.75ddef61.js"><link rel="prefetch" href="/assets/js/125.3ee2a6b7.js"><link rel="prefetch" href="/assets/js/126.b2aeeb34.js"><link rel="prefetch" href="/assets/js/127.90ac1dcc.js"><link rel="prefetch" href="/assets/js/128.238579c0.js"><link rel="prefetch" href="/assets/js/129.f66670f9.js"><link rel="prefetch" href="/assets/js/13.a028b36f.js"><link rel="prefetch" href="/assets/js/130.2cbc12ac.js"><link rel="prefetch" href="/assets/js/131.9553576b.js"><link rel="prefetch" href="/assets/js/132.d331f87a.js"><link rel="prefetch" href="/assets/js/133.64912778.js"><link rel="prefetch" href="/assets/js/134.3ada85ed.js"><link rel="prefetch" href="/assets/js/135.c4392044.js"><link rel="prefetch" href="/assets/js/136.c6cfbd01.js"><link rel="prefetch" href="/assets/js/137.8f503ca0.js"><link rel="prefetch" href="/assets/js/138.01d7fc08.js"><link rel="prefetch" href="/assets/js/139.e9a3a95d.js"><link rel="prefetch" href="/assets/js/14.65f39f77.js"><link rel="prefetch" href="/assets/js/140.7d2472ed.js"><link rel="prefetch" href="/assets/js/141.0d42bee4.js"><link rel="prefetch" href="/assets/js/142.3afc63bd.js"><link rel="prefetch" href="/assets/js/143.cdcdd594.js"><link rel="prefetch" href="/assets/js/144.1a534dc9.js"><link rel="prefetch" href="/assets/js/145.f5f26dee.js"><link rel="prefetch" href="/assets/js/146.0671dc91.js"><link rel="prefetch" href="/assets/js/147.48658226.js"><link rel="prefetch" href="/assets/js/148.331a1953.js"><link rel="prefetch" href="/assets/js/149.56108969.js"><link rel="prefetch" href="/assets/js/15.b1f5bc33.js"><link rel="prefetch" href="/assets/js/150.82fec307.js"><link rel="prefetch" href="/assets/js/151.6828b702.js"><link rel="prefetch" href="/assets/js/152.fa9ad1ff.js"><link rel="prefetch" href="/assets/js/153.32716de0.js"><link rel="prefetch" href="/assets/js/154.39b7254d.js"><link rel="prefetch" href="/assets/js/155.1ff6ebf3.js"><link rel="prefetch" href="/assets/js/156.3b76d480.js"><link rel="prefetch" href="/assets/js/157.da707645.js"><link rel="prefetch" href="/assets/js/16.2ec1439a.js"><link rel="prefetch" href="/assets/js/17.0ba8cd3a.js"><link rel="prefetch" href="/assets/js/18.d5f90a50.js"><link rel="prefetch" href="/assets/js/19.22d9c002.js"><link rel="prefetch" href="/assets/js/20.0cde8d67.js"><link rel="prefetch" href="/assets/js/21.a209b460.js"><link rel="prefetch" href="/assets/js/22.2939944a.js"><link rel="prefetch" href="/assets/js/24.27f3d1bd.js"><link rel="prefetch" href="/assets/js/25.707d371c.js"><link rel="prefetch" href="/assets/js/26.6f3f0315.js"><link rel="prefetch" href="/assets/js/27.6cd86b20.js"><link rel="prefetch" href="/assets/js/28.e378e4d9.js"><link rel="prefetch" href="/assets/js/29.900dac98.js"><link rel="prefetch" href="/assets/js/3.4a71031c.js"><link rel="prefetch" href="/assets/js/30.fa8314ac.js"><link rel="prefetch" href="/assets/js/31.a3984537.js"><link rel="prefetch" href="/assets/js/32.f759f942.js"><link rel="prefetch" href="/assets/js/33.6f902a59.js"><link rel="prefetch" href="/assets/js/34.a9d2e827.js"><link rel="prefetch" href="/assets/js/35.9f97b41c.js"><link rel="prefetch" href="/assets/js/36.d13a0708.js"><link rel="prefetch" href="/assets/js/37.e91014d6.js"><link rel="prefetch" href="/assets/js/38.c307e81f.js"><link rel="prefetch" href="/assets/js/39.a6acd4d3.js"><link rel="prefetch" href="/assets/js/4.46df8a1d.js"><link rel="prefetch" href="/assets/js/40.f493f4e8.js"><link rel="prefetch" href="/assets/js/41.fc50e1c1.js"><link rel="prefetch" href="/assets/js/42.7e888c2f.js"><link rel="prefetch" href="/assets/js/43.832b9607.js"><link rel="prefetch" href="/assets/js/44.694e7e40.js"><link rel="prefetch" href="/assets/js/45.0b926c30.js"><link rel="prefetch" href="/assets/js/46.a17bf2cb.js"><link rel="prefetch" href="/assets/js/47.ea650aad.js"><link rel="prefetch" href="/assets/js/48.53e9604f.js"><link rel="prefetch" href="/assets/js/49.da687996.js"><link rel="prefetch" href="/assets/js/5.f325f129.js"><link rel="prefetch" href="/assets/js/50.161db625.js"><link rel="prefetch" href="/assets/js/51.e63dbf3c.js"><link rel="prefetch" href="/assets/js/52.c5e826ec.js"><link rel="prefetch" href="/assets/js/53.a0b21621.js"><link rel="prefetch" href="/assets/js/54.16714595.js"><link rel="prefetch" href="/assets/js/55.0da04810.js"><link rel="prefetch" href="/assets/js/56.0ce57d11.js"><link rel="prefetch" href="/assets/js/57.e7206922.js"><link rel="prefetch" href="/assets/js/58.d872a000.js"><link rel="prefetch" href="/assets/js/59.b705d1e4.js"><link rel="prefetch" href="/assets/js/6.4d3af9d8.js"><link rel="prefetch" href="/assets/js/60.a6440621.js"><link rel="prefetch" href="/assets/js/61.33f83771.js"><link rel="prefetch" href="/assets/js/62.a4f6e6a3.js"><link rel="prefetch" href="/assets/js/63.a4a064a4.js"><link rel="prefetch" href="/assets/js/64.198cc699.js"><link rel="prefetch" href="/assets/js/65.5892750a.js"><link rel="prefetch" href="/assets/js/66.c5eb3a18.js"><link rel="prefetch" href="/assets/js/67.29dfebe5.js"><link rel="prefetch" href="/assets/js/68.caba7182.js"><link rel="prefetch" href="/assets/js/69.f3ba51b8.js"><link rel="prefetch" href="/assets/js/7.27cb176f.js"><link rel="prefetch" href="/assets/js/70.a976804e.js"><link rel="prefetch" href="/assets/js/71.50a71b36.js"><link rel="prefetch" href="/assets/js/72.b33a0420.js"><link rel="prefetch" href="/assets/js/73.6c69d5b5.js"><link rel="prefetch" href="/assets/js/74.e29396b8.js"><link rel="prefetch" href="/assets/js/75.563095f7.js"><link rel="prefetch" href="/assets/js/76.4c2c16de.js"><link rel="prefetch" href="/assets/js/77.4bcfa9a2.js"><link rel="prefetch" href="/assets/js/78.5ca1388f.js"><link rel="prefetch" href="/assets/js/79.dd4aad2f.js"><link rel="prefetch" href="/assets/js/8.403b34cf.js"><link rel="prefetch" href="/assets/js/80.24e0a75d.js"><link rel="prefetch" href="/assets/js/81.aec0cfee.js"><link rel="prefetch" href="/assets/js/82.2db8417e.js"><link rel="prefetch" href="/assets/js/83.f5822d27.js"><link rel="prefetch" href="/assets/js/84.1eb234a1.js"><link rel="prefetch" href="/assets/js/85.e59784a7.js"><link rel="prefetch" href="/assets/js/86.700a4c10.js"><link rel="prefetch" href="/assets/js/87.778b3074.js"><link rel="prefetch" href="/assets/js/88.e7a55537.js"><link rel="prefetch" href="/assets/js/89.86eb1d82.js"><link rel="prefetch" href="/assets/js/9.d14d459d.js"><link rel="prefetch" href="/assets/js/90.7ea8b8aa.js"><link rel="prefetch" href="/assets/js/91.022d0638.js"><link rel="prefetch" href="/assets/js/92.5b9a2c4f.js"><link rel="prefetch" href="/assets/js/93.b9bb140d.js"><link rel="prefetch" href="/assets/js/94.49c5a0db.js"><link rel="prefetch" href="/assets/js/95.af935f25.js"><link rel="prefetch" href="/assets/js/96.e646bdcc.js"><link rel="prefetch" href="/assets/js/97.ee0cf30d.js"><link rel="prefetch" href="/assets/js/98.a6132e91.js"><link rel="prefetch" href="/assets/js/99.8b4e5f4e.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.adb6ffce.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/ja/" class="home-link router-link-active"><!----> <span class="site-name">NuShell</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/ja/book/" class="nav-link router-link-active">
+  本
+</a></div><div class="nav-item"><a href="/contributor-book/" class="nav-link">
+  Contributor Book
+</a></div><div class="nav-item"><a href="/cookbook/" class="nav-link">
+  Cookbook
+</a></div><div class="nav-item"><a href="/blog/" class="nav-link">
+  Blog
+</a></div><div class="nav-item"><a href="http://nushell.sh/demo" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Demo
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Select language" class="dropdown-title"><span class="title">言語</span> <span class="arrow down"></span></button> <button type="button" aria-label="Select language" class="mobile-dropdown-title"><span class="title">言語</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/book/working_with_tables.html" class="nav-link">
+  English
+</a></li><li class="dropdown-item"><!----> <a href="/es/" class="nav-link">
+  Español
+</a></li><li class="dropdown-item"><!----> <a href="/ja/book/working_with_tables.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  日本語
+</a></li><li class="dropdown-item"><!----> <a href="/pt-BR/" class="nav-link">
+  Português do Brasil
+</a></li><li class="dropdown-item"><!----> <a href="/zh-cn/book/working_with_tables.html" class="nav-link">
+  中文
+</a></li></ul></div></div> <a href="https://github.com/nushell/nushell" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/ja/book/" class="nav-link router-link-active">
+  本
+</a></div><div class="nav-item"><a href="/contributor-book/" class="nav-link">
+  Contributor Book
+</a></div><div class="nav-item"><a href="/cookbook/" class="nav-link">
+  Cookbook
+</a></div><div class="nav-item"><a href="/blog/" class="nav-link">
+  Blog
+</a></div><div class="nav-item"><a href="http://nushell.sh/demo" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Demo
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Select language" class="dropdown-title"><span class="title">言語</span> <span class="arrow down"></span></button> <button type="button" aria-label="Select language" class="mobile-dropdown-title"><span class="title">言語</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/book/working_with_tables.html" class="nav-link">
+  English
+</a></li><li class="dropdown-item"><!----> <a href="/es/" class="nav-link">
+  Español
+</a></li><li class="dropdown-item"><!----> <a href="/ja/book/working_with_tables.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  日本語
+</a></li><li class="dropdown-item"><!----> <a href="/pt-BR/" class="nav-link">
+  Português do Brasil
+</a></li><li class="dropdown-item"><!----> <a href="/zh-cn/book/working_with_tables.html" class="nav-link">
+  中文
+</a></li></ul></div></div> <a href="https://github.com/nushell/nushell" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Nu 本</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/ja/book/installation.html" class="sidebar-link">Nuのインストール</a></li><li><a href="/ja/book/introduction.html" class="sidebar-link">はじめに</a></li><li><a href="/ja/book/moving_around.html" class="sidebar-link">システム内の移動</a></li><li><a href="/ja/book/types_of_data.html" class="sidebar-link">データ型</a></li><li><a href="/ja/book/loading_data.html" class="sidebar-link">データの読み込み</a></li><li><a href="/ja/book/working_with_tables.html" aria-current="page" class="active sidebar-link">テーブルを扱う</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/ja/book/working_with_tables.html#データのソート" class="sidebar-link">データのソート</a></li><li class="sidebar-sub-header"><a href="/ja/book/working_with_tables.html#必要なデータを選択する" class="sidebar-link">必要なデータを選択する</a></li><li class="sidebar-sub-header"><a href="/ja/book/working_with_tables.html#テーブルからデータを取得する" class="sidebar-link">テーブルからデータを取得する</a></li><li class="sidebar-sub-header"><a href="/ja/book/working_with_tables.html#テーブルのデータを変更する" class="sidebar-link">テーブルのデータを変更する</a></li></ul></li><li><a href="/ja/book/pipeline.html" class="sidebar-link">パイプライン</a></li><li><a href="/ja/book/configuration.html" class="sidebar-link">設定</a></li><li><a href="/ja/book/metadata.html" class="sidebar-link">メタデータ</a></li><li><a href="/ja/book/shells_in_shells.html" class="sidebar-link">シェルの中のシェル</a></li><li><a href="/ja/book/escaping.html" class="sidebar-link">エスケープ</a></li><li><a href="/ja/book/plugins.html" class="sidebar-link">プラグイン</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="テーブルを扱う"><a href="#テーブルを扱う" class="header-anchor">#</a> テーブルを扱う</h1> <p>Nuでデータを表示する一般的な方法はテーブルを使用することです。Nuには、探しているものを見つけやすくしたり、必要なデータを絞り込んだりするのに便利なテーブルを操作するためのコマンドが多数付属しています。</p> <p>まずはじめに、今回利用するテーブルを確認しましょう。</p> <div class="language- extra-class"><pre class="language-text"><code>&gt; ls
+---+---------------+------+----------+---------+------------+------------
+ # | name          | type | readonly | size    | accessed   | modified
+---+---------------+------+----------+---------+------------+------------
+ 0 | add.rs        | File |          | 2.7 KB  | 2 days ago | 2 days ago
+ 1 | sum.rs        | File |          | 3.0 KB  | 2 days ago | 2 days ago
+ 2 | inc.rs        | File |          | 11.8 KB | 2 days ago | 2 days ago
+ 3 | str.rs        | File |          | 21.4 KB | 2 days ago | 2 days ago
+ 4 | skip.rs       | File |          | 1.7 KB  | 2 days ago | 2 days ago
+ 5 | textview.rs   | File |          | 9.4 KB  | 2 days ago | 2 days ago
+ 6 | binaryview.rs | File |          | 13.0 KB | a day ago  | a day ago
+ 7 | edit.rs       | File |          | 2.7 KB  | 2 days ago | 2 days ago
+ 8 | tree.rs       | File |          | 3.0 KB  | 2 days ago | 2 days ago
+ 9 | sys.rs        | File |          | 9.2 KB  | 2 days ago | 2 days ago
+---+---------------+------+----------+---------+------------+------------
+</code></pre></div><h2 id="データのソート"><a href="#データのソート" class="header-anchor">#</a> データのソート</h2> <p>ソートに利用する列名を指定して、<code>sort-by</code>コマンドを呼びだすことでテーブルをソートできます。ファイルのサイズでテーブルをソートしたいとしましょう。</p> <div class="language- extra-class"><pre class="language-text"><code>&gt; ls | sort-by size
+---+---------------+------+----------+---------+------------+------------
+ # | name          | type | readonly | size    | accessed   | modified
+---+---------------+------+----------+---------+------------+------------
+ 0 | skip.rs       | File |          | 1.7 KB  | 2 days ago | 2 days ago
+ 1 | add.rs        | File |          | 2.7 KB  | 2 days ago | 2 days ago
+ 2 | edit.rs       | File |          | 2.7 KB  | 2 days ago | 2 days ago
+ 3 | sum.rs        | File |          | 3.0 KB  | 2 days ago | 2 days ago
+ 4 | tree.rs       | File |          | 3.0 KB  | 2 days ago | 2 days ago
+ 5 | sys.rs        | File |          | 9.2 KB  | 2 days ago | 2 days ago
+ 6 | textview.rs   | File |          | 9.4 KB  | 2 days ago | 2 days ago
+ 7 | inc.rs        | File |          | 11.8 KB | 2 days ago | 2 days ago
+ 8 | binaryview.rs | File |          | 13.0 KB | a day ago  | a day ago
+ 9 | str.rs        | File |          | 21.4 KB | 2 days ago | 2 days ago
+---+---------------+------+----------+---------+------------+------------
+</code></pre></div><p>比較さえできれば任意の列でソートが行なえます。例えば、&quot;name&quot;、&quot;accessed&quot;、または&quot;modified&quot;列でソートすることができます。</p> <h2 id="必要なデータを選択する"><a href="#必要なデータを選択する" class="header-anchor">#</a> 必要なデータを選択する</h2> <p>列や行を選択することでテーブルから必要なデータを選択できます。テーブルからいくつかの列を選択してみましょう。</p> <div class="language- extra-class"><pre class="language-text"><code>&gt; ls | select name size
+---+---------------+---------
+ # | name          | size
+---+---------------+---------
+ 0 | add.rs        | 2.7 KB
+ 1 | sum.rs        | 3.0 KB
+ 2 | inc.rs        | 11.8 KB
+ 3 | str.rs        | 21.4 KB
+ 4 | skip.rs       | 1.7 KB
+ 5 | textview.rs   | 9.4 KB
+ 6 | binaryview.rs | 13.0 KB
+ 7 | edit.rs       | 2.7 KB
+ 8 | tree.rs       | 3.0 KB
+ 9 | sys.rs        | 9.2 KB
+---+---------------+---------
+</code></pre></div><p>こうすることで、より必要とするデータにフォーカスしたテーブルを作ることができます。次にディレクトリからもっとも小さい5つのファイルを表示してみます。</p> <div class="language- extra-class"><pre class="language-text"><code>&gt; ls | sort-by size | first 5
+---+---------+------+----------+--------+------------+------------
+ # | name    | type | readonly | size   | accessed   | modified
+---+---------+------+----------+--------+------------+------------
+ 0 | skip.rs | File |          | 1.7 KB | 2 days ago | 2 days ago
+ 1 | add.rs  | File |          | 2.7 KB | 2 days ago | 2 days ago
+ 2 | edit.rs | File |          | 2.7 KB | 2 days ago | 2 days ago
+ 3 | sum.rs  | File |          | 3.0 KB | 2 days ago | 2 days ago
+ 4 | tree.rs | File |          | 3.0 KB | 2 days ago | 2 days ago
+---+---------+------+----------+--------+------------+------------
+</code></pre></div><p>もっとも小さいファイルを取得するためにまずサイズでソートし、それから<code>first 5</code>を利用してテーブルから最初の5行を返しています。</p> <p>不要な行を<code>skip</code>することもできます。上記で返された５行のうち最初の２行をスキップしてみましょう。</p> <div class="language- extra-class"><pre class="language-text"><code>&gt; ls | sort-by size | first 5 | skip 2
+---+---------+------+----------+--------+------------+------------
+ # | name    | type | readonly | size   | accessed   | modified
+---+---------+------+----------+--------+------------+------------
+ 0 | edit.rs | File |          | 2.7 KB | 2 days ago | 2 days ago
+ 1 | sum.rs  | File |          | 3.0 KB | 2 days ago | 2 days ago
+ 2 | tree.rs | File |          | 3.0 KB | 2 days ago | 2 days ago
+---+---------+------+----------+--------+------------+------------
+</code></pre></div><p>関心のある３行に絞り込みました。</p> <p>データを選択するための他のコマンドもみてみましょう。テーブルの各行が数字をもつことを疑問に思っているかもしれません。これは単一の行を簡単に指定する方法として機能します。テーブルをファイル名でソートして、<code>n-th</code>コマンドを利用してn行目を選択してみましょう。</p> <div class="language- extra-class"><pre class="language-text"><code>&gt; ls | sort-by name
+---+---------------+------+----------+---------+------------+------------
+ # | name          | type | readonly | size    | accessed   | modified
+---+---------------+------+----------+---------+------------+------------
+ 0 | add.rs        | File |          | 2.7 KB  | 2 days ago | 2 days ago
+ 1 | binaryview.rs | File |          | 13.0 KB | a day ago  | a day ago
+ 2 | edit.rs       | File |          | 2.7 KB  | 2 days ago | 2 days ago
+ 3 | inc.rs        | File |          | 11.8 KB | 2 days ago | 2 days ago
+ 4 | skip.rs       | File |          | 1.7 KB  | 2 days ago | 2 days ago
+ 5 | str.rs        | File |          | 21.4 KB | 2 days ago | 2 days ago
+ 6 | sum.rs        | File |          | 3.0 KB  | 2 days ago | 2 days ago
+ 7 | sys.rs        | File |          | 9.2 KB  | 2 days ago | 2 days ago
+ 8 | textview.rs   | File |          | 9.4 KB  | 2 days ago | 2 days ago
+ 9 | tree.rs       | File |          | 3.0 KB  | 2 days ago | 2 days ago
+---+---------------+------+----------+---------+------------+------------
+
+&gt; ls | sort-by name | nth 5
+--------+------+----------+---------+------------+------------
+ name   | type | readonly | size    | accessed   | modified
+--------+------+----------+---------+------------+------------
+ str.rs | File |          | 21.4 KB | 2 days ago | 2 days ago
+--------+------+----------+---------+------------+------------
+</code></pre></div><h2 id="テーブルからデータを取得する"><a href="#テーブルからデータを取得する" class="header-anchor">#</a> テーブルからデータを取得する</h2> <p>これまでは、テーブルを必要なものだけにトリミングする操作を行ってきました。ときには一歩進んで、列全体ではなく、セル自体の値が必要になるかもしれません。たとえば、ファイル名のリストだけを取得したいとしましょう。この場合<code>get</code>コマンドを利用することができます。</p> <div class="language- extra-class"><pre class="language-text"><code>&gt; ls | get name
+---+---------------
+ # | value
+---+---------------
+ 0 | add.rs
+ 1 | sum.rs
+ 2 | inc.rs
+ 3 | str.rs
+ 4 | skip.rs
+ 5 | textview.rs
+ 6 | binaryview.rs
+ 7 | edit.rs
+ 8 | tree.rs
+ 9 | sys.rs
+---+---------------
+</code></pre></div><p>これで各ファイルの名前が取得できました。</p> <p>これはさきほどみた<code>select</code>コマンドと同じにみえるかもしれません、比較のために<code>select</code>コマンドの出力もみておきましょう。</p> <div class="language- extra-class"><pre class="language-text"><code>&gt; ls | select name
+---+---------------
+ # | name
+---+---------------
+ 0 | add.rs
+ 1 | sum.rs
+ 2 | inc.rs
+ 3 | str.rs
+ 4 | skip.rs
+ 5 | textview.rs
+ 6 | binaryview.rs
+ 7 | edit.rs
+ 8 | tree.rs
+ 9 | sys.rs
+---+---------------
+</code></pre></div><p>両者は非常に似ています！両者の違いを明確にしておきましょう。</p> <ul><li><code>select</code> - 指定された列のみを含む新しいテーブルを作成します</li> <li><code>get</code> - 指定された列内の値を返します</li></ul> <p>テーブルからこれらを区別する方法の一つは、<code>value</code>列名です。これにより値のリストであることがわかります。</p> <p><code>get</code>コマンドは、パスを受け取りテーブル内のより深いデータへアクセスすることができます。これにより.jsonファイルにあるような複雑なデータを簡単に操作することができます。</p> <h2 id="テーブルのデータを変更する"><a href="#テーブルのデータを変更する" class="header-anchor">#</a> テーブルのデータを変更する</h2> <p>テーブルからデータを選択することに加えて、テーブルの内容を更新することもできます。新しい列を加えたり、セルの内容を編集したりできるのです。Nuでは、その場で編集するのではなく、パイプラインの各コマンドは新しいテーブルを返します。</p> <h3 id="新しい列を追加する"><a href="#新しい列を追加する" class="header-anchor">#</a> 新しい列を追加する</h3> <p><code>add</code>コマンドを使用して、新しい列をテーブルに追加できます。例をみてみましょう。</p> <div class="language- extra-class"><pre class="language-text"><code>&gt; open rustfmt.toml
+---------
+ edition
+---------
+ 2018
+---------
+</code></pre></div><p>値が2021の&quot;next_edition&quot;列を追加してみましょう。</p> <div class="language- extra-class"><pre class="language-text"><code>&gt; open rustfmt.toml | add next_edition 2021
+---------+--------------
+ edition | next_edition
+---------+--------------
+ 2018    | 2021
+---------+--------------
+</code></pre></div><p>元のファイルは変更されていないことに注意してください。</p> <div class="language- extra-class"><pre class="language-text"><code>&gt; open rustfmt.toml
+---------
+ edition
+---------
+ 2018
+---------
+</code></pre></div><p>Nuの変更は永続的な変更ではなく、値自体に作用する関数的な変更です。これにより、結果を書き出す準備ができるまでパイプライン上で様々な種類の作業をおこなうことができます。ここでは、<code>save</code>コマンドを使用して結果を書き出すことができます。</p> <div class="language- extra-class"><pre class="language-text"><code>&gt; open rustfmt.toml | add next_edition 2021 | save rustfmt2.toml
+/home/jonathan/Source/nushell(master)&gt; open rustfmt2.toml
+---------+--------------
+ edition | next_edition
+---------+--------------
+ 2018    | 2021
+---------+--------------
+</code></pre></div><h3 id="列の編集する"><a href="#列の編集する" class="header-anchor">#</a> 列の編集する</h3> <p><code>add</code>コマンドと同様に、<code>edit</code>コマンドを利用して列の内容を新しい値に変更することもできます。実際に動作を確認するために同じファイルを開いてみましょう。</p> <div class="language- extra-class"><pre class="language-text"><code>open rustfmt.toml
+---------
+ edition
+---------
+ 2018
+---------
+</code></pre></div><p>今度は、サポートした次のeditionを指定するよう更新しましょう。</p> <div class="language- extra-class"><pre class="language-text"><code>&gt; open rustfmt.toml | edit edition 2021
+---------
+ edition
+---------
+ 2021
+---------
+</code></pre></div><h3 id="値を増やす"><a href="#値を増やす" class="header-anchor">#</a> 値を増やす</h3> <p>数字やバージョンを扱う際に便利なコマンドがもうひとつあります、<code>inc</code>です。</p> <div class="language- extra-class"><pre class="language-text"><code>&gt; open rustfmt.toml
+---------
+ edition
+---------
+ 2018
+---------
+&gt; open rustfmt.toml | inc edition
+---------
+ edition
+---------
+ 2019
+---------
+</code></pre></div><p>&quot;edition&quot;の値は数字なので、<code>inc</code>を使って更新することができます。バージョンを扱う際には<code>inc</code>がその真価を発揮します。</p> <div class="language- extra-class"><pre class="language-text"><code>&gt; open Cargo.toml | get package.version
+0.1.3
+&gt; open Cargo.toml | inc package.version --minor | get package.version
+0.2.0
+</code></pre></div><p>バージョンを扱う際には、フラグを利用して、バージョンのインクリメント方法を指定できます。</p> <ul><li><strong>--major</strong> - メジャーバージョンをインクリメント (0.1.3 -&gt; 1.0.0)</li> <li><strong>--minor</strong> - マイナーバージョンをインクリメント (0.1.3 -&gt; 0.2.0)</li> <li><strong>--patch</strong> - パッチバージョンをインクリメント (0.1.3 -&gt; 0.1.4)</li></ul></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/nushell/nushell.github.io/edit/master/ja/book/working_with_tables.md" target="_blank" rel="noopener noreferrer">GitHubでこのページを編集する</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/ja/book/loading_data.html" class="prev">
+        データの読み込み
+      </a></span> <span class="next"><a href="/ja/book/pipeline.html">
+        パイプライン
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.e39887a6.js" defer></script><script src="/assets/js/23.66326f15.js" defer></script><script src="/assets/js/2.fdae228b.js" defer></script><script src="/assets/js/120.ffbb0954.js" defer></script>
+  </body>
+</html>

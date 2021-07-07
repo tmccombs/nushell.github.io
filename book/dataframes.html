@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="English">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Dataframes | Nushell</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/icon.png">
+    <meta name="description" content="A new type of shell.">
+    <meta name="theme-color" content="#3eaf7c">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    
+    <link rel="preload" href="/assets/css/0.styles.9747aa62.css" as="style"><link rel="preload" href="/assets/js/app.e89946ee.js" as="script"><link rel="preload" href="/assets/js/9.a1d290eb.js" as="script"><link rel="preload" href="/assets/js/2.4b7b0434.js" as="script"><link rel="preload" href="/assets/js/298.b0a08b5f.js" as="script"><link rel="prefetch" href="/assets/js/10.b887fa78.js"><link rel="prefetch" href="/assets/js/100.86206568.js"><link rel="prefetch" href="/assets/js/101.2575df4b.js"><link rel="prefetch" href="/assets/js/102.f1d09d21.js"><link rel="prefetch" href="/assets/js/103.06c78e1e.js"><link rel="prefetch" href="/assets/js/104.03a3dbf1.js"><link rel="prefetch" href="/assets/js/105.a882a9c6.js"><link rel="prefetch" href="/assets/js/106.5208c761.js"><link rel="prefetch" href="/assets/js/107.3d733777.js"><link rel="prefetch" href="/assets/js/108.a31971e9.js"><link rel="prefetch" href="/assets/js/109.0a30f86e.js"><link rel="prefetch" href="/assets/js/11.ec3287c8.js"><link rel="prefetch" href="/assets/js/110.048ee8dd.js"><link rel="prefetch" href="/assets/js/111.3f58f391.js"><link rel="prefetch" href="/assets/js/112.3133a9f2.js"><link rel="prefetch" href="/assets/js/113.ff0a71f8.js"><link rel="prefetch" href="/assets/js/114.53b8610c.js"><link rel="prefetch" href="/assets/js/115.7c231f26.js"><link rel="prefetch" href="/assets/js/116.be1221b5.js"><link rel="prefetch" href="/assets/js/117.e7594e99.js"><link rel="prefetch" href="/assets/js/118.47ed11f4.js"><link rel="prefetch" href="/assets/js/119.b568972c.js"><link rel="prefetch" href="/assets/js/12.0188ccad.js"><link rel="prefetch" href="/assets/js/120.e79ac979.js"><link rel="prefetch" href="/assets/js/121.682fbfc3.js"><link rel="prefetch" href="/assets/js/122.b17c492e.js"><link rel="prefetch" href="/assets/js/123.c1892bea.js"><link rel="prefetch" href="/assets/js/124.fe1abc62.js"><link rel="prefetch" href="/assets/js/125.d119b235.js"><link rel="prefetch" href="/assets/js/126.15640a97.js"><link rel="prefetch" href="/assets/js/127.bd6a913f.js"><link rel="prefetch" href="/assets/js/128.e55556bf.js"><link rel="prefetch" href="/assets/js/129.9c6adb39.js"><link rel="prefetch" href="/assets/js/13.6a955bb7.js"><link rel="prefetch" href="/assets/js/130.243ceae9.js"><link rel="prefetch" href="/assets/js/131.31f612b2.js"><link rel="prefetch" href="/assets/js/132.439be330.js"><link rel="prefetch" href="/assets/js/133.5b346204.js"><link rel="prefetch" href="/assets/js/134.60d17763.js"><link rel="prefetch" href="/assets/js/135.7412a5e4.js"><link rel="prefetch" href="/assets/js/136.f3a3732a.js"><link rel="prefetch" href="/assets/js/137.0dbfa660.js"><link rel="prefetch" href="/assets/js/138.82c42976.js"><link rel="prefetch" href="/assets/js/139.cebacecc.js"><link rel="prefetch" href="/assets/js/14.069a437a.js"><link rel="prefetch" href="/assets/js/140.b751fc0d.js"><link rel="prefetch" href="/assets/js/141.d0ff7a08.js"><link rel="prefetch" href="/assets/js/142.1136c9f3.js"><link rel="prefetch" href="/assets/js/143.c9bbb09d.js"><link rel="prefetch" href="/assets/js/144.a425c20a.js"><link rel="prefetch" href="/assets/js/145.262ab835.js"><link rel="prefetch" href="/assets/js/146.74b8f53a.js"><link rel="prefetch" href="/assets/js/147.418a4d04.js"><link rel="prefetch" href="/assets/js/148.d3687477.js"><link rel="prefetch" href="/assets/js/149.d476490d.js"><link rel="prefetch" href="/assets/js/15.e43e6f7e.js"><link rel="prefetch" href="/assets/js/150.87ed3043.js"><link rel="prefetch" href="/assets/js/151.b28d654f.js"><link rel="prefetch" href="/assets/js/152.39168633.js"><link rel="prefetch" href="/assets/js/153.c14465bb.js"><link rel="prefetch" href="/assets/js/154.ef00472a.js"><link rel="prefetch" href="/assets/js/155.80e6d0e7.js"><link rel="prefetch" href="/assets/js/156.b24204cf.js"><link rel="prefetch" href="/assets/js/157.3c2fc137.js"><link rel="prefetch" href="/assets/js/158.930af89e.js"><link rel="prefetch" href="/assets/js/159.b1d3e05b.js"><link rel="prefetch" href="/assets/js/16.32f11eda.js"><link rel="prefetch" href="/assets/js/160.b42d3f3d.js"><link rel="prefetch" href="/assets/js/161.1968896d.js"><link rel="prefetch" href="/assets/js/162.c644569d.js"><link rel="prefetch" href="/assets/js/163.9e42b6a6.js"><link rel="prefetch" href="/assets/js/164.6f0201b1.js"><link rel="prefetch" href="/assets/js/165.d66854ea.js"><link rel="prefetch" href="/assets/js/166.45052444.js"><link rel="prefetch" href="/assets/js/167.40b95d87.js"><link rel="prefetch" href="/assets/js/168.defbb8f9.js"><link rel="prefetch" href="/assets/js/169.89b24a1c.js"><link rel="prefetch" href="/assets/js/17.2c00e171.js"><link rel="prefetch" href="/assets/js/170.a88ecfb1.js"><link rel="prefetch" href="/assets/js/171.6dcf178a.js"><link rel="prefetch" href="/assets/js/172.42e36de2.js"><link rel="prefetch" href="/assets/js/173.8b153c48.js"><link rel="prefetch" href="/assets/js/174.96ff21cf.js"><link rel="prefetch" href="/assets/js/175.0b49f562.js"><link rel="prefetch" href="/assets/js/176.77dc96de.js"><link rel="prefetch" href="/assets/js/177.82c7d326.js"><link rel="prefetch" href="/assets/js/178.48f3b709.js"><link rel="prefetch" href="/assets/js/179.0e9b57c0.js"><link rel="prefetch" href="/assets/js/18.5fd19982.js"><link rel="prefetch" href="/assets/js/180.e9ba4345.js"><link rel="prefetch" href="/assets/js/181.bf703e1a.js"><link rel="prefetch" href="/assets/js/182.dd2e1369.js"><link rel="prefetch" href="/assets/js/183.76a9e7c7.js"><link rel="prefetch" href="/assets/js/184.69c88f7e.js"><link rel="prefetch" href="/assets/js/185.3829bc9f.js"><link rel="prefetch" href="/assets/js/186.9c968bd4.js"><link rel="prefetch" href="/assets/js/187.1cbaf197.js"><link rel="prefetch" href="/assets/js/188.fb174c10.js"><link rel="prefetch" href="/assets/js/189.0003ce8a.js"><link rel="prefetch" href="/assets/js/19.0eac9c6a.js"><link rel="prefetch" href="/assets/js/190.d10905f6.js"><link rel="prefetch" href="/assets/js/191.cfb57a41.js"><link rel="prefetch" href="/assets/js/192.50d3f98d.js"><link rel="prefetch" href="/assets/js/193.bfcdce61.js"><link rel="prefetch" href="/assets/js/194.5b398961.js"><link rel="prefetch" href="/assets/js/195.2dc1ca5e.js"><link rel="prefetch" href="/assets/js/196.987be7ea.js"><link rel="prefetch" href="/assets/js/197.3352a129.js"><link rel="prefetch" href="/assets/js/198.2403cf28.js"><link rel="prefetch" href="/assets/js/199.80333e87.js"><link rel="prefetch" href="/assets/js/20.b7e1697f.js"><link rel="prefetch" href="/assets/js/200.4b09ad4a.js"><link rel="prefetch" href="/assets/js/201.d705ef3c.js"><link rel="prefetch" href="/assets/js/202.5adf12ab.js"><link rel="prefetch" href="/assets/js/203.d608994e.js"><link rel="prefetch" href="/assets/js/204.2d808013.js"><link rel="prefetch" href="/assets/js/205.aaa08c82.js"><link rel="prefetch" href="/assets/js/206.73af1dc0.js"><link rel="prefetch" href="/assets/js/207.2451fe8d.js"><link rel="prefetch" href="/assets/js/208.35830396.js"><link rel="prefetch" href="/assets/js/209.2e719bef.js"><link rel="prefetch" href="/assets/js/21.cbf003d2.js"><link rel="prefetch" href="/assets/js/210.d7ee98b5.js"><link rel="prefetch" href="/assets/js/211.5d5032b8.js"><link rel="prefetch" href="/assets/js/212.9e107757.js"><link rel="prefetch" href="/assets/js/213.dded0c72.js"><link rel="prefetch" href="/assets/js/214.7627e5fa.js"><link rel="prefetch" href="/assets/js/215.5ee7f850.js"><link rel="prefetch" href="/assets/js/216.afbc4491.js"><link rel="prefetch" href="/assets/js/217.262e3712.js"><link rel="prefetch" href="/assets/js/218.0c2b72d5.js"><link rel="prefetch" href="/assets/js/219.a8ab7b78.js"><link rel="prefetch" href="/assets/js/22.b4922040.js"><link rel="prefetch" href="/assets/js/220.f8bde1a5.js"><link rel="prefetch" href="/assets/js/221.7a9763ed.js"><link rel="prefetch" href="/assets/js/222.9b67741b.js"><link rel="prefetch" href="/assets/js/223.32fa1773.js"><link rel="prefetch" href="/assets/js/224.960caf6e.js"><link rel="prefetch" href="/assets/js/225.6a92505b.js"><link rel="prefetch" href="/assets/js/226.68e560d1.js"><link rel="prefetch" href="/assets/js/227.82cdc213.js"><link rel="prefetch" href="/assets/js/228.d522c0b9.js"><link rel="prefetch" href="/assets/js/229.59909cb6.js"><link rel="prefetch" href="/assets/js/23.a53ce1c3.js"><link rel="prefetch" href="/assets/js/230.74d6f921.js"><link rel="prefetch" href="/assets/js/231.081b9355.js"><link rel="prefetch" href="/assets/js/232.5c2e727a.js"><link rel="prefetch" href="/assets/js/233.a8fe4c3e.js"><link rel="prefetch" href="/assets/js/234.b75d538f.js"><link rel="prefetch" href="/assets/js/235.2ef2c30d.js"><link rel="prefetch" href="/assets/js/236.008ffaf7.js"><link rel="prefetch" href="/assets/js/237.b5fab6e8.js"><link rel="prefetch" href="/assets/js/238.94782bc8.js"><link rel="prefetch" href="/assets/js/239.e3d4f617.js"><link rel="prefetch" href="/assets/js/24.9857db2f.js"><link rel="prefetch" href="/assets/js/240.3de7e08b.js"><link rel="prefetch" href="/assets/js/241.6e5505a4.js"><link rel="prefetch" href="/assets/js/242.4da4f65b.js"><link rel="prefetch" href="/assets/js/243.c7dff322.js"><link rel="prefetch" href="/assets/js/244.75b65c4f.js"><link rel="prefetch" href="/assets/js/245.ea0d6e09.js"><link rel="prefetch" href="/assets/js/246.0d3362f3.js"><link rel="prefetch" href="/assets/js/247.d5d9ab24.js"><link rel="prefetch" href="/assets/js/248.a00dc1b1.js"><link rel="prefetch" href="/assets/js/249.8b4600a0.js"><link rel="prefetch" href="/assets/js/25.ab73775a.js"><link rel="prefetch" href="/assets/js/250.f0848860.js"><link rel="prefetch" href="/assets/js/251.117bec3f.js"><link rel="prefetch" href="/assets/js/252.b36c6315.js"><link rel="prefetch" href="/assets/js/253.507332fd.js"><link rel="prefetch" href="/assets/js/254.f00491fe.js"><link rel="prefetch" href="/assets/js/255.e0341ef8.js"><link rel="prefetch" href="/assets/js/256.5702ee7d.js"><link rel="prefetch" href="/assets/js/257.8b4fd002.js"><link rel="prefetch" href="/assets/js/258.56165054.js"><link rel="prefetch" href="/assets/js/259.8e6d4b41.js"><link rel="prefetch" href="/assets/js/26.473d08b7.js"><link rel="prefetch" href="/assets/js/260.e924c5bd.js"><link rel="prefetch" href="/assets/js/261.5da4fc17.js"><link rel="prefetch" href="/assets/js/262.099629a2.js"><link rel="prefetch" href="/assets/js/263.e6e6f986.js"><link rel="prefetch" href="/assets/js/264.e94065ab.js"><link rel="prefetch" href="/assets/js/265.07cc37b4.js"><link rel="prefetch" href="/assets/js/266.56ff748f.js"><link rel="prefetch" href="/assets/js/267.45b70ecd.js"><link rel="prefetch" href="/assets/js/268.958e6a0b.js"><link rel="prefetch" href="/assets/js/269.58102a84.js"><link rel="prefetch" href="/assets/js/27.3aaa8394.js"><link rel="prefetch" href="/assets/js/270.02509aa1.js"><link rel="prefetch" href="/assets/js/271.8931634b.js"><link rel="prefetch" href="/assets/js/272.e9bf7278.js"><link rel="prefetch" href="/assets/js/273.6540fdde.js"><link rel="prefetch" href="/assets/js/274.024dab2f.js"><link rel="prefetch" href="/assets/js/275.410b4297.js"><link rel="prefetch" href="/assets/js/276.d29cbd9f.js"><link rel="prefetch" href="/assets/js/277.c8904dab.js"><link rel="prefetch" href="/assets/js/278.b2271be0.js"><link rel="prefetch" href="/assets/js/279.cd19d2e2.js"><link rel="prefetch" href="/assets/js/28.ea8fcfc4.js"><link rel="prefetch" href="/assets/js/280.c8540e61.js"><link rel="prefetch" href="/assets/js/281.2b82bcd2.js"><link rel="prefetch" href="/assets/js/282.89ea5fd2.js"><link rel="prefetch" href="/assets/js/283.d879da33.js"><link rel="prefetch" href="/assets/js/284.42c4fdd4.js"><link rel="prefetch" href="/assets/js/285.c71e1dc2.js"><link rel="prefetch" href="/assets/js/286.bc9dd3cf.js"><link rel="prefetch" href="/assets/js/287.3a99e8d0.js"><link rel="prefetch" href="/assets/js/288.b395cde8.js"><link rel="prefetch" href="/assets/js/289.223439fe.js"><link rel="prefetch" href="/assets/js/29.9981875e.js"><link rel="prefetch" href="/assets/js/290.710014b9.js"><link rel="prefetch" href="/assets/js/291.457eccd1.js"><link rel="prefetch" href="/assets/js/292.efcd27a5.js"><link rel="prefetch" href="/assets/js/293.67aea402.js"><link rel="prefetch" href="/assets/js/294.cea09730.js"><link rel="prefetch" href="/assets/js/295.8f22872a.js"><link rel="prefetch" href="/assets/js/296.4ebee95b.js"><link rel="prefetch" href="/assets/js/297.ac98e649.js"><link rel="prefetch" href="/assets/js/299.4e9bb5b1.js"><link rel="prefetch" href="/assets/js/3.6054bca1.js"><link rel="prefetch" href="/assets/js/30.42358c4b.js"><link rel="prefetch" href="/assets/js/300.bd9b4f9f.js"><link rel="prefetch" href="/assets/js/301.30031920.js"><link rel="prefetch" href="/assets/js/302.dfa52bb4.js"><link rel="prefetch" href="/assets/js/303.f65c321d.js"><link rel="prefetch" href="/assets/js/304.fb3fa5b9.js"><link rel="prefetch" href="/assets/js/305.860f50e2.js"><link rel="prefetch" href="/assets/js/306.321dfa00.js"><link rel="prefetch" href="/assets/js/307.5a48963e.js"><link rel="prefetch" href="/assets/js/308.9551e248.js"><link rel="prefetch" href="/assets/js/309.a61539e5.js"><link rel="prefetch" href="/assets/js/31.55a8625c.js"><link rel="prefetch" href="/assets/js/310.11d8546b.js"><link rel="prefetch" href="/assets/js/311.74bfab31.js"><link rel="prefetch" href="/assets/js/312.272a4e16.js"><link rel="prefetch" href="/assets/js/313.a0558742.js"><link rel="prefetch" href="/assets/js/314.f1a6e3ef.js"><link rel="prefetch" href="/assets/js/315.853b86c3.js"><link rel="prefetch" href="/assets/js/316.34899e71.js"><link rel="prefetch" href="/assets/js/317.8a40bf98.js"><link rel="prefetch" href="/assets/js/318.c44023ec.js"><link rel="prefetch" href="/assets/js/319.87c2744b.js"><link rel="prefetch" href="/assets/js/32.2d5d7aaf.js"><link rel="prefetch" href="/assets/js/320.2647ac82.js"><link rel="prefetch" href="/assets/js/321.f47f8d00.js"><link rel="prefetch" href="/assets/js/322.f860ab38.js"><link rel="prefetch" href="/assets/js/323.d0ee9059.js"><link rel="prefetch" href="/assets/js/324.e389a163.js"><link rel="prefetch" href="/assets/js/325.99ba8d7b.js"><link rel="prefetch" href="/assets/js/326.786355ae.js"><link rel="prefetch" href="/assets/js/327.2ad2d2b4.js"><link rel="prefetch" href="/assets/js/328.72060c74.js"><link rel="prefetch" href="/assets/js/329.7aa7bde0.js"><link rel="prefetch" href="/assets/js/33.04aad10d.js"><link rel="prefetch" href="/assets/js/330.e8f55513.js"><link rel="prefetch" href="/assets/js/331.a2208678.js"><link rel="prefetch" href="/assets/js/332.444bc38c.js"><link rel="prefetch" href="/assets/js/333.38beaacc.js"><link rel="prefetch" href="/assets/js/334.cb602b13.js"><link rel="prefetch" href="/assets/js/335.ebd375a5.js"><link rel="prefetch" href="/assets/js/336.a445e0de.js"><link rel="prefetch" href="/assets/js/337.62abd8f1.js"><link rel="prefetch" href="/assets/js/338.ff5d252a.js"><link rel="prefetch" href="/assets/js/339.15dfac9a.js"><link rel="prefetch" href="/assets/js/34.02b4cf38.js"><link rel="prefetch" href="/assets/js/340.c82f85ab.js"><link rel="prefetch" href="/assets/js/341.1f3e9817.js"><link rel="prefetch" href="/assets/js/342.c30b5629.js"><link rel="prefetch" href="/assets/js/343.31764c94.js"><link rel="prefetch" href="/assets/js/344.f21b2da1.js"><link rel="prefetch" href="/assets/js/345.565b2fe3.js"><link rel="prefetch" href="/assets/js/346.e3774eee.js"><link rel="prefetch" href="/assets/js/347.c5e802d5.js"><link rel="prefetch" href="/assets/js/348.1b12036b.js"><link rel="prefetch" href="/assets/js/349.84beaa13.js"><link rel="prefetch" href="/assets/js/35.aa1bbca8.js"><link rel="prefetch" href="/assets/js/350.a6d15c77.js"><link rel="prefetch" href="/assets/js/351.f058b315.js"><link rel="prefetch" href="/assets/js/352.82b81b43.js"><link rel="prefetch" href="/assets/js/353.6a4b4491.js"><link rel="prefetch" href="/assets/js/354.28c8ca29.js"><link rel="prefetch" href="/assets/js/355.f665e810.js"><link rel="prefetch" href="/assets/js/356.0f0422b8.js"><link rel="prefetch" href="/assets/js/357.b7f2a5a7.js"><link rel="prefetch" href="/assets/js/358.f688644a.js"><link rel="prefetch" href="/assets/js/359.2720aad3.js"><link rel="prefetch" href="/assets/js/36.bbfdb8f4.js"><link rel="prefetch" href="/assets/js/360.0180242d.js"><link rel="prefetch" href="/assets/js/361.a09db56d.js"><link rel="prefetch" href="/assets/js/362.156dae71.js"><link rel="prefetch" href="/assets/js/363.0078fe3c.js"><link rel="prefetch" href="/assets/js/364.5f5b21de.js"><link rel="prefetch" href="/assets/js/365.a05788be.js"><link rel="prefetch" href="/assets/js/366.c460b4bc.js"><link rel="prefetch" href="/assets/js/367.a6ba4694.js"><link rel="prefetch" href="/assets/js/368.0ac8de30.js"><link rel="prefetch" href="/assets/js/369.e1fcacb5.js"><link rel="prefetch" href="/assets/js/37.12c6ca0d.js"><link rel="prefetch" href="/assets/js/370.ea74d57b.js"><link rel="prefetch" href="/assets/js/371.84d0c022.js"><link rel="prefetch" href="/assets/js/372.2d952365.js"><link rel="prefetch" href="/assets/js/373.1758004d.js"><link rel="prefetch" href="/assets/js/374.70ed1162.js"><link rel="prefetch" href="/assets/js/375.ba94f963.js"><link rel="prefetch" href="/assets/js/376.c2cbcfcf.js"><link rel="prefetch" href="/assets/js/377.784d6a6a.js"><link rel="prefetch" href="/assets/js/378.083184c2.js"><link rel="prefetch" href="/assets/js/379.7624c739.js"><link rel="prefetch" href="/assets/js/38.05c80267.js"><link rel="prefetch" href="/assets/js/380.9b2589f8.js"><link rel="prefetch" href="/assets/js/381.e4e1232c.js"><link rel="prefetch" href="/assets/js/382.59e0d85c.js"><link rel="prefetch" href="/assets/js/383.9468ea12.js"><link rel="prefetch" href="/assets/js/384.502d312c.js"><link rel="prefetch" href="/assets/js/385.c2de5352.js"><link rel="prefetch" href="/assets/js/386.4918e5ee.js"><link rel="prefetch" href="/assets/js/387.980bc3c6.js"><link rel="prefetch" href="/assets/js/388.13315157.js"><link rel="prefetch" href="/assets/js/389.b9a4e638.js"><link rel="prefetch" href="/assets/js/39.c706fbfa.js"><link rel="prefetch" href="/assets/js/390.a677d96a.js"><link rel="prefetch" href="/assets/js/391.4b48222d.js"><link rel="prefetch" href="/assets/js/392.e6ed16e4.js"><link rel="prefetch" href="/assets/js/393.656778a7.js"><link rel="prefetch" href="/assets/js/394.0cd34307.js"><link rel="prefetch" href="/assets/js/395.e397161e.js"><link rel="prefetch" href="/assets/js/396.5feffd84.js"><link rel="prefetch" href="/assets/js/397.18882148.js"><link rel="prefetch" href="/assets/js/398.09910faa.js"><link rel="prefetch" href="/assets/js/399.88872e00.js"><link rel="prefetch" href="/assets/js/4.03a176dc.js"><link rel="prefetch" href="/assets/js/40.f9593c27.js"><link rel="prefetch" href="/assets/js/400.8af021cd.js"><link rel="prefetch" href="/assets/js/401.193a843e.js"><link rel="prefetch" href="/assets/js/402.0cb561f3.js"><link rel="prefetch" href="/assets/js/403.e0b6fe8b.js"><link rel="prefetch" href="/assets/js/404.0ea6f6e2.js"><link rel="prefetch" href="/assets/js/405.e96b90d1.js"><link rel="prefetch" href="/assets/js/406.e00b8ae5.js"><link rel="prefetch" href="/assets/js/407.10b06513.js"><link rel="prefetch" href="/assets/js/408.05957cbe.js"><link rel="prefetch" href="/assets/js/409.3089aa76.js"><link rel="prefetch" href="/assets/js/41.bf738d68.js"><link rel="prefetch" href="/assets/js/410.bf360da2.js"><link rel="prefetch" href="/assets/js/411.e588e4d5.js"><link rel="prefetch" href="/assets/js/412.3853a9ff.js"><link rel="prefetch" href="/assets/js/413.d1088e50.js"><link rel="prefetch" href="/assets/js/414.d9419308.js"><link rel="prefetch" href="/assets/js/415.aa83ceeb.js"><link rel="prefetch" href="/assets/js/416.741b6ddf.js"><link rel="prefetch" href="/assets/js/417.b4bcd9f8.js"><link rel="prefetch" href="/assets/js/418.1a190eb5.js"><link rel="prefetch" href="/assets/js/419.f357e449.js"><link rel="prefetch" href="/assets/js/42.630f4d63.js"><link rel="prefetch" href="/assets/js/420.34a51ae9.js"><link rel="prefetch" href="/assets/js/421.f4099413.js"><link rel="prefetch" href="/assets/js/422.62d867ee.js"><link rel="prefetch" href="/assets/js/423.dc8ee95d.js"><link rel="prefetch" href="/assets/js/424.b59c2e4b.js"><link rel="prefetch" href="/assets/js/425.28ca71f6.js"><link rel="prefetch" href="/assets/js/426.be460574.js"><link rel="prefetch" href="/assets/js/427.b8ff06aa.js"><link rel="prefetch" href="/assets/js/43.765b4bd3.js"><link rel="prefetch" href="/assets/js/44.fdd64390.js"><link rel="prefetch" href="/assets/js/45.355244fe.js"><link rel="prefetch" href="/assets/js/46.830988a9.js"><link rel="prefetch" href="/assets/js/47.49527294.js"><link rel="prefetch" href="/assets/js/48.794e10b4.js"><link rel="prefetch" href="/assets/js/49.9a424270.js"><link rel="prefetch" href="/assets/js/5.43c27557.js"><link rel="prefetch" href="/assets/js/50.10b581f9.js"><link rel="prefetch" href="/assets/js/51.6aceef30.js"><link rel="prefetch" href="/assets/js/52.9794ccaf.js"><link rel="prefetch" href="/assets/js/53.9fd697c3.js"><link rel="prefetch" href="/assets/js/54.0d477180.js"><link rel="prefetch" href="/assets/js/55.02e40772.js"><link rel="prefetch" href="/assets/js/56.c4c081e5.js"><link rel="prefetch" href="/assets/js/57.25e867da.js"><link rel="prefetch" href="/assets/js/58.571317c3.js"><link rel="prefetch" href="/assets/js/59.026a940b.js"><link rel="prefetch" href="/assets/js/6.73572a69.js"><link rel="prefetch" href="/assets/js/60.36b75cdd.js"><link rel="prefetch" href="/assets/js/61.5a3af2e9.js"><link rel="prefetch" href="/assets/js/62.ea8de91b.js"><link rel="prefetch" href="/assets/js/63.6d3fcdf8.js"><link rel="prefetch" href="/assets/js/64.70899376.js"><link rel="prefetch" href="/assets/js/65.55f39cca.js"><link rel="prefetch" href="/assets/js/66.17046008.js"><link rel="prefetch" href="/assets/js/67.bf62a8ba.js"><link rel="prefetch" href="/assets/js/68.814aa5fb.js"><link rel="prefetch" href="/assets/js/69.c3a83852.js"><link rel="prefetch" href="/assets/js/7.fc2d655a.js"><link rel="prefetch" href="/assets/js/70.8362a2c9.js"><link rel="prefetch" href="/assets/js/71.8b33bdcd.js"><link rel="prefetch" href="/assets/js/72.4bceb814.js"><link rel="prefetch" href="/assets/js/73.5edecb9e.js"><link rel="prefetch" href="/assets/js/74.f435b7f3.js"><link rel="prefetch" href="/assets/js/75.e251a90c.js"><link rel="prefetch" href="/assets/js/76.81a8f7bd.js"><link rel="prefetch" href="/assets/js/77.751dffb3.js"><link rel="prefetch" href="/assets/js/78.75114b90.js"><link rel="prefetch" href="/assets/js/79.c57d5252.js"><link rel="prefetch" href="/assets/js/8.b13a7765.js"><link rel="prefetch" href="/assets/js/80.91b17abd.js"><link rel="prefetch" href="/assets/js/81.efafb2dd.js"><link rel="prefetch" href="/assets/js/82.97011ea6.js"><link rel="prefetch" href="/assets/js/83.47ab1c15.js"><link rel="prefetch" href="/assets/js/84.7a0e0f35.js"><link rel="prefetch" href="/assets/js/85.138c7592.js"><link rel="prefetch" href="/assets/js/86.431bc34b.js"><link rel="prefetch" href="/assets/js/87.52734695.js"><link rel="prefetch" href="/assets/js/88.18beb4f2.js"><link rel="prefetch" href="/assets/js/89.48b522eb.js"><link rel="prefetch" href="/assets/js/90.48d9792b.js"><link rel="prefetch" href="/assets/js/91.d39a5f8a.js"><link rel="prefetch" href="/assets/js/92.3a48c6e0.js"><link rel="prefetch" href="/assets/js/93.d75ad9a2.js"><link rel="prefetch" href="/assets/js/94.8a745c9d.js"><link rel="prefetch" href="/assets/js/95.4f50646f.js"><link rel="prefetch" href="/assets/js/96.d2b14959.js"><link rel="prefetch" href="/assets/js/97.df471ba4.js"><link rel="prefetch" href="/assets/js/98.634a3171.js"><link rel="prefetch" href="/assets/js/99.9f5a7cde.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.9747aa62.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Nushell</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/book/" class="nav-link router-link-active">
+  Book
+</a></div><div class="nav-item"><a href="/contributor-book/" class="nav-link">
+  Contributor Book
+</a></div><div class="nav-item"><a href="/cookbook/" class="nav-link">
+  Cookbook
+</a></div><div class="nav-item"><a href="/blog/" class="nav-link">
+  Blog
+</a></div><div class="nav-item"><a href="http://nushell.sh/demo" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Demo
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Select language" class="dropdown-title"><span class="title">Languages</span> <span class="arrow down"></span></button> <button type="button" aria-label="Select language" class="mobile-dropdown-title"><span class="title">Languages</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/book/dataframes.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  English
+</a></li><li class="dropdown-item"><!----> <a href="/es/" class="nav-link">
+  Español
+</a></li><li class="dropdown-item"><!----> <a href="/ja/" class="nav-link">
+  日本語
+</a></li><li class="dropdown-item"><!----> <a href="/pt-BR/" class="nav-link">
+  Português do Brasil
+</a></li><li class="dropdown-item"><!----> <a href="/zh-cn/" class="nav-link">
+  中文
+</a></li></ul></div></div> <a href="https://github.com/nushell/nushell" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/book/" class="nav-link router-link-active">
+  Book
+</a></div><div class="nav-item"><a href="/contributor-book/" class="nav-link">
+  Contributor Book
+</a></div><div class="nav-item"><a href="/cookbook/" class="nav-link">
+  Cookbook
+</a></div><div class="nav-item"><a href="/blog/" class="nav-link">
+  Blog
+</a></div><div class="nav-item"><a href="http://nushell.sh/demo" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Demo
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Select language" class="dropdown-title"><span class="title">Languages</span> <span class="arrow down"></span></button> <button type="button" aria-label="Select language" class="mobile-dropdown-title"><span class="title">Languages</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/book/dataframes.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  English
+</a></li><li class="dropdown-item"><!----> <a href="/es/" class="nav-link">
+  Español
+</a></li><li class="dropdown-item"><!----> <a href="/ja/" class="nav-link">
+  日本語
+</a></li><li class="dropdown-item"><!----> <a href="/pt-BR/" class="nav-link">
+  Português do Brasil
+</a></li><li class="dropdown-item"><!----> <a href="/zh-cn/" class="nav-link">
+  中文
+</a></li></ul></div></div> <a href="https://github.com/nushell/nushell" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Nu Book</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/book/" aria-current="page" class="sidebar-link">Introduction</a></li><li><a href="/book/installation.html" class="sidebar-link">Installing Nu</a></li><li><a href="/book/moving_around.html" class="sidebar-link">Moving around your system</a></li><li><a href="/book/types_of_data.html" class="sidebar-link">Types of data</a></li><li><a href="/book/loading_data.html" class="sidebar-link">Loading data</a></li><li><a href="/book/working_with_lists.html" class="sidebar-link">Working with lists</a></li><li><a href="/book/working_with_tables.html" class="sidebar-link">Working with tables</a></li><li><a href="/book/pipeline.html" class="sidebar-link">Pipelines</a></li><li><a href="/book/configuration.html" class="sidebar-link">Configuration</a></li><li><a href="/book/custom_commands.html" class="sidebar-link">Custom commands</a></li><li><a href="/book/aliases.html" class="sidebar-link">Aliases</a></li><li><a href="/book/operators.html" class="sidebar-link">Operators</a></li><li><a href="/book/math.html" class="sidebar-link">Math</a></li><li><a href="/book/variables_and_subexpressions.html" class="sidebar-link">Variables and Subexpressions</a></li><li><a href="/book/environment.html" class="sidebar-link">Environment</a></li><li><a href="/book/scripts.html" class="sidebar-link">Scripts</a></li><li><a href="/book/metadata.html" class="sidebar-link">Metadata</a></li><li><a href="/book/shells_in_shells.html" class="sidebar-link">Shells in shells</a></li><li><a href="/book/escaping.html" class="sidebar-link">Escaping to the system</a></li><li><a href="/book/plugins.html" class="sidebar-link">Plugins</a></li><li><a href="/book/dataframes.html" aria-current="page" class="active sidebar-link">Dataframes</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/book/dataframes.html#benchmark-comparisons" class="sidebar-link">Benchmark comparisons</a></li><li class="sidebar-sub-header"><a href="/book/dataframes.html#working-with-dataframes" class="sidebar-link">Working with Dataframes</a></li><li class="sidebar-sub-header"><a href="/book/dataframes.html#basic-aggregations" class="sidebar-link">Basic aggregations</a></li><li class="sidebar-sub-header"><a href="/book/dataframes.html#joining-a-dataframe" class="sidebar-link">Joining a DataFrame</a></li><li class="sidebar-sub-header"><a href="/book/dataframes.html#dataframe-group-by" class="sidebar-link">DataFrame group-by</a></li><li class="sidebar-sub-header"><a href="/book/dataframes.html#creating-dataframes" class="sidebar-link">Creating Dataframes</a></li><li class="sidebar-sub-header"><a href="/book/dataframes.html#working-with-series" class="sidebar-link">Working with Series</a></li><li class="sidebar-sub-header"><a href="/book/dataframes.html#series-and-masks" class="sidebar-link">Series and masks</a></li><li class="sidebar-sub-header"><a href="/book/dataframes.html#series-as-indices" class="sidebar-link">Series as indices</a></li><li class="sidebar-sub-header"><a href="/book/dataframes.html#unique-values" class="sidebar-link">Unique values</a></li><li class="sidebar-sub-header"><a href="/book/dataframes.html#dataframes-commands" class="sidebar-link">Dataframes commands</a></li><li class="sidebar-sub-header"><a href="/book/dataframes.html#future-of-dataframes" class="sidebar-link">Future of Dataframes</a></li></ul></li><li><a href="/book/coming_from_bash.html" class="sidebar-link">Coming from Bash</a></li><li><a href="/book/nushell_map.html" class="sidebar-link">Nu map from other shells and domain specific languages</a></li><li><a href="/book/nushell_map_imperative.html" class="sidebar-link">Nu map from imperative languages</a></li><li><a href="/book/nushell_map_functional.html" class="sidebar-link">Nu map from functional languages</a></li><li><a href="/book/nushell_operator_map.html" class="sidebar-link">Nushell operator map</a></li><li><a href="/book/command_reference.html" class="sidebar-link">Command Reference</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="dataframes"><a href="#dataframes" class="header-anchor">#</a> Dataframes</h1> <blockquote><p>Note. The dataframe commands are available from version 0.33.1 onwards</p></blockquote> <p>As you have seen so far, nushell makes working with data its main priority.
+<code>Lists</code> and <code>Tables</code> are there to help you cycle through values in order to
+perform multiple operations or find data in a a breeze. However, there are
+certain operations where a row based data layout is not the most efficient way
+to process data, specially when working with extremely large files. Operations
+like group-by or join using large datasets can be costly memory wise, and may
+lead to large computational times if they are not done using the appropriate
+data format.</p> <p>For this reason, the <code>DataFrame</code> structure was introduced to nushell. A
+<code>DataFrame</code> stores its data in a columnar format using as its base the <a href="https://arrow.apache.org/" target="_blank" rel="noopener noreferrer">Apache
+Arrow<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> specification and uses
+<a href="https://github.com/pola-rs/polars" target="_blank" rel="noopener noreferrer">Polars<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> as the motor for performing
+extremely <a href="https://h2oai.github.io/db-benchmark/" target="_blank" rel="noopener noreferrer">fast columnar operations<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>.</p> <p>You may be wondering now how fast this combo could be and how could it make
+working with data easier and more reliable. For this reason, let's start this
+page by presenting benchmarks on common operations that are done when
+processing data.</p> <h2 id="benchmark-comparisons"><a href="#benchmark-comparisons" class="header-anchor">#</a> Benchmark comparisons</h2> <p>For this little benchmark exercise we will be comparing native nushell
+commands, dataframe nushell commands and Python Pandas commands. For the time
+being don't pay too much attention on the <code>dataframe</code> commands. They will be
+explained in future sections of this page.</p> <blockquote><p>System Details: The benchmarks presented in this section were run using a
+machine with a processor Intel(R) Core(TM) i7-10710U (CPU @1.10GHz 1.61 GHz)
+and 16 gb of RAM.</p> <p>All examples where run on Nushell version 0.33.1</p></blockquote> <h3 id="file-information"><a href="#file-information" class="header-anchor">#</a> File information</h3> <p>The file that we will be using for the benchmarks is the
+<a href="https://www.stats.govt.nz/assets/Uploads/New-Zealand-business-demography-statistics/New-Zealand-business-demography-statistics-At-February-2020/Download-data/Geographic-units-by-industry-and-statistical-area-2000-2020-descending-order-CSV.zip" target="_blank" rel="noopener noreferrer">New Zealand business demography<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> dataset.
+Feel free to download it if you want to follows these tests.</p> <p>The dataset has 5 columns and 5,429,252 rows, we can check that by
+using <code>dataframe list</code> command</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> <span class="token builtin class-name">let</span> <span class="token function">df</span> <span class="token operator">=</span> <span class="token punctuation">(</span>dataframe <span class="token function">open</span> .<span class="token punctuation">\</span>Data7602DescendingYearOrder.csv<span class="token punctuation">)</span>
+<span class="token operator">&gt;</span> dataframe list
+
+───┬──────┬─────────┬─────────┬───────────────────────────────────
+ <span class="token comment"># │ name │  rows   │ columns │             location</span>
+───┼──────┼─────────┼─────────┼───────────────────────────────────
+ <span class="token number">0</span> │ <span class="token variable">$df</span>  │ <span class="token number">5429252</span> │ <span class="token number">5</span>       │ .<span class="token punctuation">\</span>Data7602DescendingYearOrder.csv
+───┴──────┴─────────┴─────────┴───────────────────────────────────
+</code></pre></div><p>we can have a look at the first lines of the file using <code>dataframe head</code></p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> <span class="token variable">$df</span> <span class="token operator">|</span> dataframe <span class="token function">head</span>
+
+───┬──────────┬─────────┬──────┬───────────┬──────────
+ <span class="token comment"># │ anzsic06 │  Area   │ year │ geo_count │ ec_count</span>
+───┼──────────┼─────────┼──────┼───────────┼──────────
+ <span class="token number">0</span> │ A        │ A100100 │ <span class="token number">2000</span> │        <span class="token number">96</span> │      <span class="token number">130</span>
+ <span class="token number">1</span> │ A        │ A100200 │ <span class="token number">2000</span> │       <span class="token number">198</span> │      <span class="token number">110</span>
+ <span class="token number">2</span> │ A        │ A100300 │ <span class="token number">2000</span> │        <span class="token number">42</span> │       <span class="token number">25</span>
+ <span class="token number">3</span> │ A        │ A100400 │ <span class="token number">2000</span> │        <span class="token number">66</span> │       <span class="token number">40</span>
+ <span class="token number">4</span> │ A        │ A100500 │ <span class="token number">2000</span> │        <span class="token number">63</span> │       <span class="token number">40</span>
+───┴──────────┴─────────┴──────┴───────────┴──────────
+</code></pre></div><p>and finally, we can get an idea of the inferred datatypes</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> <span class="token variable">$df</span> <span class="token operator">|</span> dataframe dtypes
+
+───┬───────────┬───────
+ <span class="token comment"># │  column   │ dtype</span>
+───┼───────────┼───────
+ <span class="token number">0</span> │ anzsic06  │ str
+ <span class="token number">1</span> │ Area      │ str
+ <span class="token number">2</span> │ year      │ i64
+ <span class="token number">3</span> │ geo_count │ i64
+ <span class="token number">4</span> │ ec_count  │ i64
+───┴───────────┴───────
+</code></pre></div><h3 id="loading-the-file"><a href="#loading-the-file" class="header-anchor">#</a> Loading the file</h3> <p>Let's start by comparing loading times between them. First, We will load the
+data using nushell load command</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> benchmark <span class="token punctuation">{</span>open .<span class="token punctuation">\</span>Data7602DescendingYearOrder.csv<span class="token punctuation">}</span>
+
+───┬─────────────────────────
+ <span class="token comment"># │        real time</span>
+───┼─────────────────────────
+ <span class="token number">0</span> │ 30sec 479ms 614us 400ns
+───┴─────────────────────────
+</code></pre></div><p>Loading the file using native nushell commands took 30 secs. Not bad for loading
+five million records in order to do data analysis. But we think we can do a
+bit better than that.</p> <p>Let's use now Pandas. We are going to use the next script to load the file</p> <div class="language-python extra-class"><pre class="language-python"><code><span class="token keyword">import</span> pandas <span class="token keyword">as</span> pd
+
+df <span class="token operator">=</span> pd<span class="token punctuation">.</span>read_csv<span class="token punctuation">(</span><span class="token string">&quot;Data7602DescendingYearOrder.csv&quot;</span><span class="token punctuation">)</span>
+</code></pre></div><p>And the benchmark for it is</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> benchmark <span class="token punctuation">{</span>python load.py<span class="token punctuation">}</span>
+
+───┬───────────────────────
+ <span class="token comment"># │       real time</span>
+───┼───────────────────────
+ <span class="token number">0</span> │ 2sec 91ms 872us 900ns
+───┴───────────────────────
+</code></pre></div><p>That is a great improvement, from 30 secs to 2 seconds. Nicely done Pandas!!!</p> <p>Probably we can load the data a bit faster. This time we will use nushell's
+<code>dataframe open</code> command</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> benchmark <span class="token punctuation">{</span>dataframe <span class="token function">open</span> .<span class="token punctuation">\</span>Data7602DescendingYearOrder.csv<span class="token punctuation">}</span>
+
+───┬───────────────────
+ <span class="token comment"># │     real time</span>
+───┼───────────────────
+ <span class="token number">0</span> │ 601ms 700us 700ns
+───┴───────────────────
+</code></pre></div><p>This time it took us 0.6 seconds. Not bad at all.</p> <h3 id="group-by-comparison"><a href="#group-by-comparison" class="header-anchor">#</a> Group-by comparison</h3> <p>Lets do a slightly more complex operation this time. We are going to group by
+year and add groups using the column <code>geo_count</code>.</p> <p>Again, we are going to start with nushell native command.</p> <blockquote><p>Note. If you want to run this example be aware that the next command will use
+a large amount of memory. This may affect the performance of you system while
+this is being executed</p></blockquote> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> benchmark <span class="token punctuation">{</span>
+	<span class="token function">open</span> .<span class="token punctuation">\</span>Data7602DescendingYearOrder.csv
+	<span class="token operator">|</span> group-by year
+	<span class="token operator">|</span> pivot header rows
+	<span class="token operator">|</span> update rows <span class="token punctuation">{</span> get rows <span class="token operator">|</span> math <span class="token function">sum</span> <span class="token punctuation">}</span>
+	<span class="token operator">|</span> flatten
+<span class="token punctuation">}</span>
+
+───┬────────────────────────
+ <span class="token comment"># │       real time</span>
+───┼────────────────────────
+ <span class="token number">0</span> │ 6min 30sec 622ms 312us
+───┴────────────────────────
+</code></pre></div><p>So, six minutes to perform this aggregated operation.</p> <p>Let's try the same operation in pandas</p> <div class="language-python extra-class"><pre class="language-python"><code><span class="token keyword">import</span> pandas <span class="token keyword">as</span> pd
+
+df <span class="token operator">=</span> pd<span class="token punctuation">.</span>read_csv<span class="token punctuation">(</span><span class="token string">&quot;Data7602DescendingYearOrder.csv&quot;</span><span class="token punctuation">)</span>
+res <span class="token operator">=</span> df<span class="token punctuation">.</span>groupby<span class="token punctuation">(</span><span class="token string">&quot;year&quot;</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token string">&quot;geo_count&quot;</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token builtin">sum</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span>
+</code></pre></div><p>And the result from the benchmark is</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> benchmark <span class="token punctuation">{</span>python .<span class="token punctuation">\</span>load.py<span class="token punctuation">}</span>
+
+───┬────────────────────────
+ <span class="token comment"># │       real time</span>
+───┼────────────────────────
+ <span class="token number">0</span> │ 1sec 966ms 954us 800ns
+───┴────────────────────────
+</code></pre></div><p>Not bad at all. Again, pandas managed to get it done in a fraction of the time.</p> <p>To finish the comparison let's try nushell dataframes. We are going to put
+all the operations in one <code>nu</code> file to make sure we are doing similar
+operations</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token builtin class-name">let</span> <span class="token function">df</span> <span class="token operator">=</span> <span class="token punctuation">(</span>dataframe <span class="token function">open</span> Data7602DescendingYearOrder.csv<span class="token punctuation">)</span>
+<span class="token builtin class-name">let</span> res <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token variable">$df</span> <span class="token operator">|</span> dataframe group-by year <span class="token operator">|</span> dataframe aggregate <span class="token function">sum</span> <span class="token operator">|</span> dataframe <span class="token keyword">select</span> geo_count<span class="token punctuation">)</span>
+<span class="token variable">$res</span>
+</code></pre></div><p>and the benchmark with dataframes is</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> benchmark <span class="token punctuation">{</span>source load.nu<span class="token punctuation">}</span>
+
+───┬───────────────────
+ <span class="token comment"># │     real time</span>
+───┼───────────────────
+ <span class="token number">0</span> │ 557ms 658us 500ns
+───┴───────────────────
+</code></pre></div><p>Luckily nushell dataframes managed to halve the time again. Isn't that great?</p> <p>As you can see, Nushell's <code>Dataframe</code> commands are as fast as the most common
+tools that exist today to do data analysis. The commands that are included in
+this release have the potential to become your go to tool when doing data
+analysis. By composing complex nushell pipelines, you can extract information
+from data in a reliable way.</p> <h2 id="working-with-dataframes"><a href="#working-with-dataframes" class="header-anchor">#</a> Working with Dataframes</h2> <p>After seeing a glimpse of the things that can be done with <code>Dataframe</code>
+commands, now it is time to start testing them. To begin let's create a sample
+CSV file that will become our sample dataframe that we will be using along with
+the examples. In your favorite file editor paste the next lines to create out
+sample csv file.</p> <div class="language-csv extra-class"><pre class="language-csv"><code><span class="token value">int_1</span><span class="token punctuation">,</span><span class="token value">int_2</span><span class="token punctuation">,</span><span class="token value">float_1</span><span class="token punctuation">,</span><span class="token value">float_2</span><span class="token punctuation">,</span><span class="token value">first</span><span class="token punctuation">,</span><span class="token value">second</span><span class="token punctuation">,</span><span class="token value">third</span><span class="token punctuation">,</span><span class="token value">word</span>
+<span class="token value">1</span><span class="token punctuation">,</span><span class="token value">11</span><span class="token punctuation">,</span><span class="token value">0.1</span><span class="token punctuation">,</span><span class="token value">1.0</span><span class="token punctuation">,</span><span class="token value">a</span><span class="token punctuation">,</span><span class="token value">b</span><span class="token punctuation">,</span><span class="token value">c</span><span class="token punctuation">,</span><span class="token value">first</span>
+<span class="token value">2</span><span class="token punctuation">,</span><span class="token value">12</span><span class="token punctuation">,</span><span class="token value">0.2</span><span class="token punctuation">,</span><span class="token value">1.0</span><span class="token punctuation">,</span><span class="token value">a</span><span class="token punctuation">,</span><span class="token value">b</span><span class="token punctuation">,</span><span class="token value">c</span><span class="token punctuation">,</span><span class="token value">second</span>
+<span class="token value">3</span><span class="token punctuation">,</span><span class="token value">13</span><span class="token punctuation">,</span><span class="token value">0.3</span><span class="token punctuation">,</span><span class="token value">2.0</span><span class="token punctuation">,</span><span class="token value">a</span><span class="token punctuation">,</span><span class="token value">b</span><span class="token punctuation">,</span><span class="token value">c</span><span class="token punctuation">,</span><span class="token value">third</span>
+<span class="token value">4</span><span class="token punctuation">,</span><span class="token value">14</span><span class="token punctuation">,</span><span class="token value">0.4</span><span class="token punctuation">,</span><span class="token value">3.0</span><span class="token punctuation">,</span><span class="token value">b</span><span class="token punctuation">,</span><span class="token value">a</span><span class="token punctuation">,</span><span class="token value">c</span><span class="token punctuation">,</span><span class="token value">second</span>
+<span class="token value">0</span><span class="token punctuation">,</span><span class="token value">15</span><span class="token punctuation">,</span><span class="token value">0.5</span><span class="token punctuation">,</span><span class="token value">4.0</span><span class="token punctuation">,</span><span class="token value">b</span><span class="token punctuation">,</span><span class="token value">a</span><span class="token punctuation">,</span><span class="token value">a</span><span class="token punctuation">,</span><span class="token value">third</span>
+<span class="token value">6</span><span class="token punctuation">,</span><span class="token value">16</span><span class="token punctuation">,</span><span class="token value">0.6</span><span class="token punctuation">,</span><span class="token value">5.0</span><span class="token punctuation">,</span><span class="token value">b</span><span class="token punctuation">,</span><span class="token value">a</span><span class="token punctuation">,</span><span class="token value">a</span><span class="token punctuation">,</span><span class="token value">second</span>
+<span class="token value">7</span><span class="token punctuation">,</span><span class="token value">17</span><span class="token punctuation">,</span><span class="token value">0.7</span><span class="token punctuation">,</span><span class="token value">6.0</span><span class="token punctuation">,</span><span class="token value">b</span><span class="token punctuation">,</span><span class="token value">c</span><span class="token punctuation">,</span><span class="token value">a</span><span class="token punctuation">,</span><span class="token value">third</span>
+<span class="token value">8</span><span class="token punctuation">,</span><span class="token value">18</span><span class="token punctuation">,</span><span class="token value">0.8</span><span class="token punctuation">,</span><span class="token value">7.0</span><span class="token punctuation">,</span><span class="token value">c</span><span class="token punctuation">,</span><span class="token value">c</span><span class="token punctuation">,</span><span class="token value">b</span><span class="token punctuation">,</span><span class="token value">eight</span>
+<span class="token value">9</span><span class="token punctuation">,</span><span class="token value">19</span><span class="token punctuation">,</span><span class="token value">0.9</span><span class="token punctuation">,</span><span class="token value">8.0</span><span class="token punctuation">,</span><span class="token value">c</span><span class="token punctuation">,</span><span class="token value">c</span><span class="token punctuation">,</span><span class="token value">b</span><span class="token punctuation">,</span><span class="token value">ninth</span>
+<span class="token value">0</span><span class="token punctuation">,</span><span class="token value">10</span><span class="token punctuation">,</span><span class="token value">0.0</span><span class="token punctuation">,</span><span class="token value">9.0</span><span class="token punctuation">,</span><span class="token value">c</span><span class="token punctuation">,</span><span class="token value">c</span><span class="token punctuation">,</span><span class="token value">b</span><span class="token punctuation">,</span><span class="token value">ninth</span>
+</code></pre></div><p>Save the file and name it however you want to, for the sake of these examples
+the file will be called <code>test_small.csv</code>.</p> <p>Now, to read that file as a dataframe use the <code>dataframe open</code> command like
+this:</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> <span class="token builtin class-name">let</span> <span class="token function">df</span> <span class="token operator">=</span> <span class="token punctuation">(</span>dataframe <span class="token function">open</span> test_small.csv<span class="token punctuation">)</span>
+</code></pre></div><p>This should create the value <code>df</code> in memory which holds the data we just
+created.</p> <blockquote><p>Note: The command <code>dataframes open</code> can read either <strong>csv</strong> or <strong>parquet</strong>
+files.</p></blockquote> <p>To see all the dataframes that are stored in memory you can use</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> dataframe list
+
+───┬──────┬──────┬─────────┬────────────────────────
+ <span class="token comment"># │ name │ rows │ columns │        location</span>
+───┼──────┼──────┼─────────┼────────────────────────
+ <span class="token number">0</span> │ <span class="token variable">$df</span>  │ <span class="token number">10</span>   │ <span class="token number">8</span>       │ <span class="token punctuation">..</span><span class="token punctuation">\</span>test_small.csv
+───┴──────┴──────┴─────────┴────────────────────────
+</code></pre></div><p>As you can see, the command shows the created dataframes together with basic
+information about them.</p> <p>And if you want to see a preview of the loaded dataframe you can send the
+dataframe variable to the stream</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> <span class="token variable">$df</span>
+
+───┬───────┬───────┬─────────┬─────────┬───────┬────────┬───────┬────────
+ <span class="token comment"># │ int_1 │ int_2 │ float_1 │ float_2 │ first │ second │ third │  word</span>
+───┼───────┼───────┼─────────┼─────────┼───────┼────────┼───────┼────────
+ <span class="token number">0</span> │     <span class="token number">1</span> │    <span class="token number">11</span> │  <span class="token number">0.1000</span> │  <span class="token number">1.0000</span> │ a     │ b      │ c     │ first
+ <span class="token number">1</span> │     <span class="token number">2</span> │    <span class="token number">12</span> │  <span class="token number">0.2000</span> │  <span class="token number">1.0000</span> │ a     │ b      │ c     │ second
+ <span class="token number">2</span> │     <span class="token number">3</span> │    <span class="token number">13</span> │  <span class="token number">0.3000</span> │  <span class="token number">2.0000</span> │ a     │ b      │ c     │ third
+ <span class="token number">3</span> │     <span class="token number">4</span> │    <span class="token number">14</span> │  <span class="token number">0.4000</span> │  <span class="token number">3.0000</span> │ b     │ a      │ c     │ second
+ <span class="token number">4</span> │     <span class="token number">0</span> │    <span class="token number">15</span> │  <span class="token number">0.5000</span> │  <span class="token number">4.0000</span> │ b     │ a      │ a     │ third
+ <span class="token number">5</span> │     <span class="token number">6</span> │    <span class="token number">16</span> │  <span class="token number">0.6000</span> │  <span class="token number">5.0000</span> │ b     │ a      │ a     │ second
+ <span class="token number">6</span> │     <span class="token number">7</span> │    <span class="token number">17</span> │  <span class="token number">0.7000</span> │  <span class="token number">6.0000</span> │ b     │ c      │ a     │ third
+ <span class="token number">7</span> │     <span class="token number">8</span> │    <span class="token number">18</span> │  <span class="token number">0.8000</span> │  <span class="token number">7.0000</span> │ c     │ c      │ b     │ eight
+ <span class="token number">8</span> │     <span class="token number">9</span> │    <span class="token number">19</span> │  <span class="token number">0.9000</span> │  <span class="token number">8.0000</span> │ c     │ c      │ b     │ ninth
+ <span class="token number">9</span> │     <span class="token number">0</span> │    <span class="token number">10</span> │  <span class="token number">0.0000</span> │  <span class="token number">9.0000</span> │ c     │ c      │ b     │ ninth
+───┴───────┴───────┴─────────┴─────────┴───────┴────────┴───────┴────────
+</code></pre></div><p>With the dataframe in memory we can start doing column operations with the
+<code>DataFrame</code></p> <blockquote><p>Note: If you want to see all the dataframe commands that are available you
+can use <code>help dataframe</code></p></blockquote> <h2 id="basic-aggregations"><a href="#basic-aggregations" class="header-anchor">#</a> Basic aggregations</h2> <p>Let's start with basic aggregations on the dataframe. Let's sum all the columns
+that exist in <code>df</code> by using the <code>aggregate</code> command</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> <span class="token variable">$df</span> <span class="token operator">|</span> dataframe aggregate <span class="token function">sum</span>
+
+───┬───────┬───────┬─────────┬─────────┬───────┬────────┬───────┬──────
+ <span class="token comment"># │ int_1 │ int_2 │ float_1 │ float_2 │ first │ second │ third │ word</span>
+───┼───────┼───────┼─────────┼─────────┼───────┼────────┼───────┼──────
+ <span class="token number">0</span> │    <span class="token number">40</span> │   <span class="token number">145</span> │  <span class="token number">4.5000</span> │ <span class="token number">46.0000</span> │       │        │       │
+───┴───────┴───────┴─────────┴─────────┴───────┴────────┴───────┴──────
+</code></pre></div><p>As you can see, the aggregate function computes the sum for those columns where
+a sum makes sense. If you want to filter out the text column, you can select
+the columns you want by using the <code>select</code> command</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token variable">$df</span> <span class="token operator">|</span> dataframe aggregate <span class="token function">sum</span> <span class="token operator">|</span> dataframe <span class="token keyword">select</span> int_1 int_2 float_1 float_2
+
+───┬───────┬───────┬─────────┬─────────
+ <span class="token comment"># │ int_1 │ int_2 │ float_1 │ float_2</span>
+───┼───────┼───────┼─────────┼─────────
+ <span class="token number">0</span> │    <span class="token number">40</span> │   <span class="token number">145</span> │  <span class="token number">4.5000</span> │ <span class="token number">46.0000</span>
+───┴───────┴───────┴─────────┴─────────
+</code></pre></div><p>you can even store the result from this aggregation as you would store any
+other nushell variable</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> <span class="token builtin class-name">let</span> res <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token variable">$df</span> <span class="token operator">|</span> dataframe aggregate <span class="token function">sum</span> <span class="token operator">|</span> dataframe <span class="token keyword">select</span> int_1 int_2 float_1 float_2<span class="token punctuation">)</span>
+</code></pre></div><p>and now we have two dataframes stored in memory</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> dataframe list
+
+───┬──────┬──────┬─────────┬────────────────────────
+ <span class="token comment"># │ name │ rows │ columns │        location</span>
+───┼──────┼──────┼─────────┼────────────────────────
+ <span class="token number">0</span> │ <span class="token variable">$df</span>  │ <span class="token number">10</span>   │ <span class="token number">8</span>       │ <span class="token punctuation">..</span><span class="token punctuation">\</span>test_small.csv
+ <span class="token number">1</span> │ <span class="token variable">$res</span> │ <span class="token number">1</span>    │ <span class="token number">4</span>       │ stream
+───┴──────┴──────┴─────────┴────────────────────────
+</code></pre></div><p>pretty neat, isn't it?</p> <p>You can perform several aggregations on the dataframe in order to extract basic
+information from the dataframe and do basic data analysis on your brand new
+dataframe.</p> <h2 id="joining-a-dataframe"><a href="#joining-a-dataframe" class="header-anchor">#</a> Joining a DataFrame</h2> <p>It is also possible to join two dataframes using a column as reference. We are
+going to join our mini dataframe with another mini dataframe. Copy these lines
+in another file and create the corresponding dataframe (for these examples we
+are going to call it <code>test_small_a.csv</code>)</p> <div class="language- extra-class"><pre class="language-text"><code>int_1a,int_2,float_1,float_2,first
+9,14,0.4,3.0,a
+8,13,0.3,2.0,a
+7,12,0.2,1.0,a
+6,11,0.1,0.0,b
+</code></pre></div><p>We use the <code>dataframe open</code> command to create the new variable</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> <span class="token builtin class-name">let</span> df_a <span class="token operator">=</span> <span class="token punctuation">(</span>dataframe <span class="token function">open</span> test_small_a.csv<span class="token punctuation">)</span>
+</code></pre></div><p>Now, with the second dataframe loaded in memory we can join them using the
+column called <code>int_1</code> from the left dataframe and the column <code>int_1a</code> from the
+right dataframe</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> <span class="token variable">$df</span> <span class="token operator">|</span> dataframe <span class="token function">join</span> <span class="token variable">$df_a</span> -l <span class="token punctuation">[</span>int_1<span class="token punctuation">]</span> -r <span class="token punctuation">[</span>int_1a<span class="token punctuation">]</span>
+
+───┬───────┬───────┬─────────┬─────────┬───────┬────────┬───────┬─────────┬─────────────┬───────────────┬───────────────┬─────────────
+ <span class="token comment"># │ int_1 │ int_2 │ float_1 │ float_2 │ first │ second │ third │  word   │ int_2_right │ float_1_right │ float_2_right │ first_right</span>
+───┼───────┼───────┼─────────┼─────────┼───────┼────────┼───────┼─────────┼─────────────┼───────────────┼───────────────┼─────────────
+ <span class="token number">0</span> │     <span class="token number">6</span> │    <span class="token number">16</span> │  <span class="token number">0.6000</span> │  <span class="token number">5.0000</span> │ b     │ a      │ a     │ second  │          <span class="token number">11</span> │        <span class="token number">0.1000</span> │        <span class="token number">0.0000</span> │ b
+ <span class="token number">1</span> │     <span class="token number">7</span> │    <span class="token number">17</span> │  <span class="token number">0.7000</span> │  <span class="token number">6.0000</span> │ b     │ c      │ a     │ third   │          <span class="token number">12</span> │        <span class="token number">0.2000</span> │        <span class="token number">1.0000</span> │ a
+ <span class="token number">2</span> │     <span class="token number">8</span> │    <span class="token number">18</span> │  <span class="token number">0.8000</span> │  <span class="token number">7.0000</span> │ c     │ c      │ b     │ eight   │          <span class="token number">13</span> │        <span class="token number">0.3000</span> │        <span class="token number">2.0000</span> │ a
+ <span class="token number">3</span> │     <span class="token number">9</span> │    <span class="token number">19</span> │  <span class="token number">0.9000</span> │  <span class="token number">8.0000</span> │ c     │ c      │ b     │ ninth   │          <span class="token number">14</span> │        <span class="token number">0.4000</span> │        <span class="token number">3.0000</span> │ a
+───┴───────┴───────┴─────────┴─────────┴───────┴────────┴───────┴─────────┴─────────────┴───────────────┴───────────────┴─────────────
+</code></pre></div><blockquote><p>Note: In <code>Nu</code> when a command has multiple arguments that are expecting
+multiple values we use brackets <code>[]</code> to enclose those values. In the case of
+<code>dataframe join</code> we can join on multiple columns as long as they have the
+same type, for example we could have done <code>$df | dataframe join $df_a -l [int_1 int_2] -r [int_1a int_2]</code></p></blockquote> <p>By default, the join command does an inner join, meaning that it will keep the
+rows where both dataframes share the same value. You can select a left join to
+keep the missing rows from the left dataframe. You can also save this result
+in order to use it for further operations.</p> <h2 id="dataframe-group-by"><a href="#dataframe-group-by" class="header-anchor">#</a> DataFrame group-by</h2> <p>One of the most powerful operations that can be performed with a DataFrame is
+the <code>group-by</code>. This command will allow you to perform aggregation operations
+based on a grouping criteria. In nushell, a <code>GroupBy</code> is a type of object that
+can be stored and reused for multiple aggregations. This is quite handy, since
+the creation of the grouped pairs is the most expensive operation while doing
+group-by and there is no need to repeat it if you are planning to do multiple
+operations with the same group condition.</p> <p>To create a <code>GroupBy</code> object you only need to use the <code>group-by</code> command</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> <span class="token builtin class-name">let</span> group <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token variable">$df</span> <span class="token operator">|</span> dataframe group-by first<span class="token punctuation">)</span>
+<span class="token operator">&gt;</span> <span class="token variable">$group</span>
+
+───┬──────────┬───────
+ <span class="token comment"># │ property │ value</span>
+───┼──────────┼───────
+ <span class="token number">0</span> │ group by │ first
+───┴──────────┴───────
+</code></pre></div><p>When printing the <code>GroupBy</code> object we can see the columns that are used as
+criteria to group the dataframe. Using the <code>GroupBy</code> we can aggregate the
+dataframe using multiple operations</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token variable">$group</span> <span class="token operator">|</span> dataframe aggregate <span class="token function">sum</span>
+
+───┬───────┬───────────┬───────────┬─────────────┬─────────────
+ <span class="token comment"># │ first │ int_1     │ int_2     │ float_1     │ float_2</span>
+───┼───────┼───────────┼───────────┼─────────────┼─────────────
+ <span class="token number">0</span> │ a     │         <span class="token number">6</span> │        <span class="token number">36</span> │      <span class="token number">0.6000</span> │      <span class="token number">4.0000</span>
+ <span class="token number">1</span> │ b     │        <span class="token number">17</span> │        <span class="token number">62</span> │      <span class="token number">2.2000</span> │     <span class="token number">18.0000</span>
+ <span class="token number">2</span> │ c     │        <span class="token number">17</span> │        <span class="token number">47</span> │      <span class="token number">1.7000</span> │     <span class="token number">24.0000</span>
+───┴───────┴───────────┴───────────┴─────────────┴─────────────
+</code></pre></div><p>and using the same <code>GroupBy</code> you can perform now another operation on the
+whole dataframe, like <code>min</code> in this case</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token variable">$group</span> <span class="token operator">|</span> aggregate min
+
+───┬───────┬───────────┬───────────┬─────────────┬─────────────
+ <span class="token comment"># │ first │ int_1     │ int_2     │ float_1     │ float_2</span>
+───┼───────┼───────────┼───────────┼─────────────┼─────────────
+ <span class="token number">0</span> │ a     │         <span class="token number">1</span> │        <span class="token number">11</span> │      <span class="token number">0.1000</span> │      <span class="token number">1.0000</span>
+ <span class="token number">1</span> │ b     │         <span class="token number">0</span> │        <span class="token number">14</span> │      <span class="token number">0.4000</span> │      <span class="token number">3.0000</span>
+ <span class="token number">2</span> │ c     │         <span class="token number">0</span> │        <span class="token number">10</span> │      <span class="token number">0.0000</span> │      <span class="token number">7.0000</span>
+───┴───────┴───────────┴───────────┴─────────────┴─────────────
+</code></pre></div><p>the created <code>GroupBy</code> object is so handy that it can even be used as base for
+pivoting a table.  As an example, Lets use the column called <code>second</code> as the
+pivot column and the column <code>float_1</code> as the value column</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> <span class="token variable">$group</span> <span class="token operator">|</span> dataframe pivot second float_1 <span class="token function">sum</span>
+
+───┬───────┬────────┬────────┬────────
+ <span class="token comment"># │ first │   b    │   a    │   c</span>
+───┼───────┼────────┼────────┼────────
+ <span class="token number">0</span> │ a     │ <span class="token number">0.6000</span> │        │
+ <span class="token number">1</span> │ c     │        │        │ <span class="token number">1.7000</span>
+ <span class="token number">2</span> │ b     │        │ <span class="token number">1.5000</span> │ <span class="token number">0.7000</span>
+───┴───────┴────────┴────────┴────────
+</code></pre></div><blockquote><p>Note: a pivot operation is a way to aggregate data based on two columns. In
+the previous example, the result of the pivot command produced a table that
+represents the sum of all the values in the column <code>float_1</code> that are shared
+between columns <code>first</code> (now the rows) and <code>second</code> (now the columns). So,
+the value of <code>1.5</code> shown in row <code>b</code> and column <code>a</code> is the sum of all the
+floats where the column <code>first</code> is <code>b</code> and column <code>second</code> is <code>a</code></p></blockquote> <p>As you can see, the <code>GroupBy</code> object is a very powerful variable and it is
+worthy it to keep in memory to keep exploring your dataset.</p> <h2 id="creating-dataframes"><a href="#creating-dataframes" class="header-anchor">#</a> Creating Dataframes</h2> <p>It is also possible to construct dataframes from basic nushell primitives, such
+as integers, decimals, or strings. Let's create a small dataframe using the
+command <code>to-df</code>.</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> <span class="token builtin class-name">let</span> a <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span>a b<span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token punctuation">[</span><span class="token number">1</span> <span class="token number">2</span><span class="token punctuation">]</span> <span class="token punctuation">[</span><span class="token number">3</span> <span class="token number">4</span><span class="token punctuation">]</span> <span class="token punctuation">[</span><span class="token number">5</span> <span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">|</span> dataframe to-df<span class="token punctuation">)</span>
+<span class="token operator">&gt;</span> <span class="token variable">$a</span>
+
+───┬───┬───
+ <span class="token comment"># │ b │ a</span>
+───┼───┼───
+ <span class="token number">0</span> │ <span class="token number">2</span> │ <span class="token number">1</span>
+ <span class="token number">1</span> │ <span class="token number">4</span> │ <span class="token number">3</span>
+ <span class="token number">2</span> │ <span class="token number">6</span> │ <span class="token number">5</span>
+───┴───┴───
+</code></pre></div><blockquote><p>Note: For the time being, not all of Nushell primitives can be converted into
+a dataframe. This will change in the future, as the dataframe feature matures</p></blockquote> <p>We can append columns to a dataframe in order to create a new variable. As an
+example, let's append two columns to our mini dataframe <code>$a</code></p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> <span class="token builtin class-name">let</span> a2 <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token variable">$a</span> <span class="token operator">|</span> dataframe with-column <span class="token variable">$a</span>.a --name a2 <span class="token operator">|</span> dataframe with-column <span class="token variable">$a</span>.a --name a3<span class="token punctuation">)</span>
+
+───┬───┬───┬────┬────
+ <span class="token comment"># │ b │ a │ a2 │ a3</span>
+───┼───┼───┼────┼────
+ <span class="token number">0</span> │ <span class="token number">2</span> │ <span class="token number">1</span> │  <span class="token number">1</span> │  <span class="token number">1</span>
+ <span class="token number">1</span> │ <span class="token number">4</span> │ <span class="token number">3</span> │  <span class="token number">3</span> │  <span class="token number">3</span>
+ <span class="token number">2</span> │ <span class="token number">6</span> │ <span class="token number">5</span> │  <span class="token number">5</span> │  <span class="token number">5</span>
+───┴───┴───┴────┴────
+</code></pre></div><p>the powerful Nushell's piping syntax allows us to create new dataframes by
+taking data from other dataframes and append it to them. Now, if you list your
+dataframes you will see in total four dataframes</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> dataframe list
+
+───┬───────┬──────┬─────────┬────────────────────────
+ <span class="token comment"># │  name │ rows │ columns │        location</span>
+───┼───────┼──────┼─────────┼────────────────────────
+ <span class="token number">0</span> │ <span class="token variable">$a</span>    │ <span class="token number">3</span>    │ <span class="token number">2</span>       │ stream
+ <span class="token number">1</span> │ <span class="token variable">$a2</span>   │ <span class="token number">3</span>    │ <span class="token number">4</span>       │ stream
+ <span class="token number">2</span> │ <span class="token variable">$df_a</span> │ <span class="token number">4</span>    │ <span class="token number">5</span>       │ <span class="token punctuation">..</span><span class="token punctuation">\</span>test_small.csv
+ <span class="token number">3</span> │ <span class="token variable">$df</span>   │ <span class="token number">10</span>   │ <span class="token number">8</span>       │ <span class="token punctuation">..</span><span class="token punctuation">\</span>test_small.csv
+───┴───────┴──────┴─────────┴────────────────────────
+</code></pre></div><p>One thing that is important to mention is how the memory is being optimized
+while working with dataframes, and this is thanks to <strong>Apache Arrow</strong> and
+<strong>Polars</strong>. In a very simple representation, each column in a DataFrame is an
+Arrow Array, which is using several memory specifications in order to maintain
+the data as packed as possible (check <a href="https://arrow.apache.org/docs/format/Columnar.html" target="_blank" rel="noopener noreferrer">Arrow columnar
+format<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>). The other
+optimization trick is the fact that whenever possible, the columns from the
+dataframes are shared between dataframes, avoiding memory duplication for the
+same data. This means that dataframes <code>$a</code> and <code>$a2</code> are sharing the same two
+columns we created using the <code>to-df</code> command. For this reason, it isn't
+possible to change the value of a column in a dataframe. However, you can
+create new columns based on data from other columns or dataframes.</p> <h2 id="working-with-series"><a href="#working-with-series" class="header-anchor">#</a> Working with Series</h2> <p>A <code>Series</code> is the building block of a <code>DataFrame</code>. Each Series represents a
+column with the same data type, and we can create multiple Series of different
+types, such as float, int or string.</p> <p>Let's start our exploration with Series by creating one using the <code>to-series</code>
+command:</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> <span class="token builtin class-name">let</span> new <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">9</span> <span class="token number">8</span> <span class="token number">4</span><span class="token punctuation">]</span> <span class="token operator">|</span> dataframe to-series new_col<span class="token punctuation">)</span>
+<span class="token operator">&gt;</span> <span class="token variable">$new</span>
+
+───┬───────────────
+ <span class="token comment"># │ new_col (i64)</span>
+───┼───────────────
+ <span class="token number">0</span> │             <span class="token number">9</span>
+ <span class="token number">1</span> │             <span class="token number">8</span>
+ <span class="token number">2</span> │             <span class="token number">4</span>
+───┴───────────────
+</code></pre></div><p>We have created a new series from a list of integers (we could have done the
+same using floats or strings)</p> <p>Series have their own basic operations defined, and they can be used to create
+other Series. Let's create a new Series by doing some arithmetic on the
+previously created column.</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> <span class="token builtin class-name">let</span> new_2 <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token variable">$new</span> * <span class="token number">3</span> + <span class="token number">10</span><span class="token punctuation">)</span>
+<span class="token operator">&gt;</span> <span class="token variable">$new_2</span>
+
+───┬───────────────
+ <span class="token comment"># │ new_col (i64)</span>
+───┼───────────────
+ <span class="token number">0</span> │            <span class="token number">37</span>
+ <span class="token number">1</span> │            <span class="token number">34</span>
+ <span class="token number">2</span> │            <span class="token number">22</span>
+───┴───────────────
+</code></pre></div><p>Now we have a new Series that was constructed by doing basic operations on the
+previous variable.</p> <blockquote><p>Note: If you want to see how many variables you have stored in memory you can
+use <code>$scope.variables</code></p></blockquote> <p>Lets rename our previous Series so it has a memorable name</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> <span class="token builtin class-name">let</span> new_2 <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token variable">$new_2</span> <span class="token operator">|</span> dataframe <span class="token function">rename</span> memorable<span class="token punctuation">)</span>
+<span class="token operator">&gt;</span> <span class="token variable">$new_2</span>
+
+───┬─────────────────
+ <span class="token comment"># │ memorable (i64)</span>
+───┼─────────────────
+ <span class="token number">0</span> │              <span class="token number">37</span>
+ <span class="token number">1</span> │              <span class="token number">34</span>
+ <span class="token number">2</span> │              <span class="token number">22</span>
+───┴─────────────────
+</code></pre></div><p>We can also do basic operations with two Series as long as they have the same
+data type</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> <span class="token variable">$new_2</span> - <span class="token variable">$new</span>
+
+───┬─────────────────────────────
+ <span class="token comment"># │ sub_memorable_new_col (i64)</span>
+───┼─────────────────────────────
+ <span class="token number">0</span> │                          <span class="token number">28</span>
+ <span class="token number">1</span> │                          <span class="token number">26</span>
+ <span class="token number">2</span> │                          <span class="token number">18</span>
+───┴─────────────────────────────
+</code></pre></div><p>And we can add them to previously defined dataframes</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> <span class="token builtin class-name">let</span> new_df <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token variable">$a</span> <span class="token operator">|</span> dataframe with-column <span class="token variable">$new</span> --name new_col<span class="token punctuation">)</span>
+<span class="token operator">&gt;</span> <span class="token variable">$new_df</span>
+
+───┬───┬───┬─────────
+ <span class="token comment"># │ b │ a │ new_col</span>
+───┼───┼───┼─────────
+ <span class="token number">0</span> │ <span class="token number">2</span> │ <span class="token number">1</span> │       <span class="token number">9</span>
+ <span class="token number">1</span> │ <span class="token number">4</span> │ <span class="token number">3</span> │       <span class="token number">8</span>
+ <span class="token number">2</span> │ <span class="token number">6</span> │ <span class="token number">5</span> │       <span class="token number">4</span>
+───┴───┴───┴─────────
+</code></pre></div><p>The Series stored in a Dataframe can also be used directly, for example,
+we can multiply columns <code>a</code> and <code>b</code> to create a new Series</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> <span class="token variable">$new_df</span>.a * <span class="token variable">$new_df</span>.b
+
+───┬───────────────
+ <span class="token comment"># │ mul_a_b (i64)</span>
+───┼───────────────
+ <span class="token number">0</span> │             <span class="token number">2</span>
+ <span class="token number">1</span> │            <span class="token number">12</span>
+ <span class="token number">2</span> │            <span class="token number">30</span>
+───┴───────────────
+</code></pre></div><p>and we can start piping things in order to create new columns and dataframes</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> <span class="token builtin class-name">let</span> <span class="token variable">$new_df</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token variable">$new_df</span> <span class="token operator">|</span> dataframe with-column <span class="token punctuation">(</span><span class="token variable">$new_df</span>.a * <span class="token variable">$new_df</span>.b / <span class="token variable">$new_df</span>.new_col<span class="token punctuation">)</span> --name my_sum<span class="token punctuation">)</span>
+<span class="token operator">&gt;</span> <span class="token builtin class-name">let</span> <span class="token variable">$new_df</span>
+
+───┬───┬───┬─────────┬────────
+ <span class="token comment"># │ b │ a │ new_col │ my_sum</span>
+───┼───┼───┼─────────┼────────
+ <span class="token number">0</span> │ <span class="token number">2</span> │ <span class="token number">1</span> │       <span class="token number">9</span> │      <span class="token number">0</span>
+ <span class="token number">1</span> │ <span class="token number">4</span> │ <span class="token number">3</span> │       <span class="token number">8</span> │      <span class="token number">1</span>
+ <span class="token number">2</span> │ <span class="token number">6</span> │ <span class="token number">5</span> │       <span class="token number">4</span> │      <span class="token number">7</span>
+───┴───┴───┴─────────┴────────
+</code></pre></div><p>Nushell piping system can help you create very interesting workflows.</p> <h2 id="series-and-masks"><a href="#series-and-masks" class="header-anchor">#</a> Series and masks</h2> <p>Series have another key use in when working with DataFrames, and it is the fact
+that we can build boolean masks out of them. Lets start by creating a simple
+mask using the equality operator</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> <span class="token builtin class-name">let</span> mask <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token variable">$new</span> <span class="token operator">==</span> <span class="token number">8</span><span class="token punctuation">)</span>
+<span class="token operator">&gt;</span> <span class="token variable">$mask</span>
+
+───┬────────────────
+ <span class="token comment"># │ new_col (bool)</span>
+───┼────────────────
+ <span class="token number">0</span> │ <span class="token boolean">false</span>
+ <span class="token number">1</span> │ <span class="token boolean">true</span>
+ <span class="token number">2</span> │ <span class="token boolean">false</span>
+───┴────────────────
+</code></pre></div><p>and with this mask we can now filter a dataframe, like this</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> <span class="token variable">$new_df</span> <span class="token operator">|</span> dataframe filter-with <span class="token variable">$mask</span>
+
+───┬───┬───┬─────────┬────────
+ <span class="token comment"># │ a │ b │ new_col │ my_sum</span>
+───┼───┼───┼─────────┼────────
+ <span class="token number">0</span> │ <span class="token number">3</span> │ <span class="token number">4</span> │       <span class="token number">8</span> │      <span class="token number">1</span>
+───┴───┴───┴─────────┴────────
+</code></pre></div><p>Now we have a new dataframe with only the values where the mask was true.</p> <p>The masks can also be created from Nushell lists as well, for example:</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> <span class="token builtin class-name">let</span> mask1 <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token variable">$true</span> <span class="token variable">$true</span> <span class="token variable">$false</span><span class="token punctuation">]</span> <span class="token operator">|</span> dataframe to-series mask<span class="token punctuation">)</span>
+<span class="token operator">&gt;</span> <span class="token variable">$new_df</span> <span class="token operator">|</span> dataframe filter-with <span class="token variable">$mask1</span>
+
+───┬───┬───┬─────────┬────────
+ <span class="token comment"># │ a │ b │ new_col │ my_sum</span>
+───┼───┼───┼─────────┼────────
+ <span class="token number">0</span> │ <span class="token number">1</span> │ <span class="token number">2</span> │       <span class="token number">9</span> │      <span class="token number">0</span>
+ <span class="token number">1</span> │ <span class="token number">3</span> │ <span class="token number">4</span> │       <span class="token number">8</span> │      <span class="token number">1</span>
+───┴───┴───┴─────────┴────────
+</code></pre></div><p>To create complex masks, we have the <code>AND</code></p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> <span class="token variable">$mask</span> <span class="token operator">&amp;&amp;</span> <span class="token variable">$mask1</span>
+
+───┬─────────────────────────
+ <span class="token comment"># │ and_new_col_mask (bool)</span>
+───┼─────────────────────────
+ <span class="token number">0</span> │ <span class="token boolean">false</span>
+ <span class="token number">1</span> │ <span class="token boolean">true</span>
+ <span class="token number">2</span> │ <span class="token boolean">false</span>
+───┴─────────────────────────
+</code></pre></div><p>and <code>OR</code> operations</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> <span class="token variable">$mask</span> <span class="token operator">||</span> <span class="token variable">$mask1</span>
+
+───┬────────────────────────
+ <span class="token comment"># │ or_new_col_mask (bool)</span>
+───┼────────────────────────
+ <span class="token number">0</span> │ <span class="token boolean">true</span>
+ <span class="token number">1</span> │ <span class="token boolean">true</span>
+ <span class="token number">2</span> │ <span class="token boolean">false</span>
+───┴────────────────────────
+</code></pre></div><p>We can also create a mask by checking if some values exist in other Series.
+Using the first dataframe that we created we can do something like this</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> <span class="token builtin class-name">let</span> mask3 <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token variable">$df</span>.first <span class="token operator">|</span> dataframe is-in <span class="token punctuation">(</span><span class="token punctuation">[</span>b c<span class="token punctuation">]</span> <span class="token operator">|</span> dataframe to-series<span class="token punctuation">))</span>
+
+───┬──────────────
+ <span class="token comment"># │ first (bool)</span>
+───┼──────────────
+ <span class="token number">0</span> │ <span class="token boolean">false</span>
+ <span class="token number">1</span> │ <span class="token boolean">false</span>
+ <span class="token number">2</span> │ <span class="token boolean">false</span>
+ <span class="token number">3</span> │ <span class="token boolean">true</span>
+ <span class="token number">4</span> │ <span class="token boolean">true</span>
+ <span class="token number">5</span> │ <span class="token boolean">true</span>
+ <span class="token number">6</span> │ <span class="token boolean">true</span>
+ <span class="token number">7</span> │ <span class="token boolean">true</span>
+ <span class="token number">8</span> │ <span class="token boolean">true</span>
+ <span class="token number">9</span> │ <span class="token boolean">true</span>
+───┴──────────────
+</code></pre></div><p>and this new mask can be used to filter the dataframe</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> <span class="token variable">$df</span> <span class="token operator">|</span> dataframe filter-with <span class="token variable">$mask3</span>
+
+───┬───────┬───────┬─────────┬─────────┬───────┬────────┬───────┬─────────
+ <span class="token comment"># │ int_1 │ int_2 │ float_1 │ float_2 │ first │ second │ third │  word</span>
+───┼───────┼───────┼─────────┼─────────┼───────┼────────┼───────┼─────────
+ <span class="token number">0</span> │     <span class="token number">4</span> │    <span class="token number">14</span> │  <span class="token number">0.4000</span> │  <span class="token number">3.0000</span> │ b     │ a      │ c     │ second
+ <span class="token number">1</span> │     <span class="token number">0</span> │    <span class="token number">15</span> │  <span class="token number">0.5000</span> │  <span class="token number">4.0000</span> │ b     │ a      │ a     │ third
+ <span class="token number">2</span> │     <span class="token number">6</span> │    <span class="token number">16</span> │  <span class="token number">0.6000</span> │  <span class="token number">5.0000</span> │ b     │ a      │ a     │ second
+ <span class="token number">3</span> │     <span class="token number">7</span> │    <span class="token number">17</span> │  <span class="token number">0.7000</span> │  <span class="token number">6.0000</span> │ b     │ c      │ a     │ third
+ <span class="token number">4</span> │     <span class="token number">8</span> │    <span class="token number">18</span> │  <span class="token number">0.8000</span> │  <span class="token number">7.0000</span> │ c     │ c      │ b     │ eight
+ <span class="token number">5</span> │     <span class="token number">9</span> │    <span class="token number">19</span> │  <span class="token number">0.9000</span> │  <span class="token number">8.0000</span> │ c     │ c      │ b     │ ninth
+ <span class="token number">6</span> │     <span class="token number">0</span> │    <span class="token number">10</span> │  <span class="token number">0.0000</span> │  <span class="token number">9.0000</span> │ c     │ c      │ b     │ ninth
+───┴───────┴───────┴─────────┴─────────┴───────┴────────┴───────┴─────────
+</code></pre></div><p>Another operation that can be done with masks is setting or replacing a value
+from a series. For example, we can change the value in the column <code>first</code> where
+the value is equal to <code>a</code></p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> <span class="token variable">$df</span>.first <span class="token operator">|</span> dataframe <span class="token builtin class-name">set</span> new --mask <span class="token punctuation">(</span><span class="token variable">$df</span>.first <span class="token operator">=~</span> a<span class="token punctuation">)</span>
+
+───┬──────────────
+ <span class="token comment"># │ string (str)</span>
+───┼──────────────
+ <span class="token number">0</span> │ new
+ <span class="token number">1</span> │ new
+ <span class="token number">2</span> │ new
+ <span class="token number">3</span> │ b
+ <span class="token number">4</span> │ b
+ <span class="token number">5</span> │ b
+ <span class="token number">6</span> │ b
+ <span class="token number">7</span> │ c
+ <span class="token number">8</span> │ c
+ <span class="token number">9</span> │ c
+───┴──────────────
+</code></pre></div><h2 id="series-as-indices"><a href="#series-as-indices" class="header-anchor">#</a> Series as indices</h2> <p>Series can be also used as a way of filtering a dataframe by using them as a
+list of indices. For example, let's say that we want to get rows 1, 4, and 6
+from our original dataframe. With that in mind, we can use the next command to
+extract that information</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> <span class="token builtin class-name">let</span> indices <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span> <span class="token number">4</span> <span class="token number">6</span><span class="token punctuation">]</span> <span class="token operator">|</span> dataframe to-series<span class="token punctuation">)</span>
+<span class="token operator">&gt;</span> <span class="token variable">$df</span> <span class="token operator">|</span> dataframe take <span class="token variable">$indices</span>
+
+───┬───────┬───────┬─────────┬─────────┬───────┬────────┬───────┬────────
+ <span class="token comment"># │ int_1 │ int_2 │ float_1 │ float_2 │ first │ second │ third │  word</span>
+───┼───────┼───────┼─────────┼─────────┼───────┼────────┼───────┼────────
+ <span class="token number">0</span> │     <span class="token number">2</span> │    <span class="token number">12</span> │  <span class="token number">0.2000</span> │  <span class="token number">1.0000</span> │ a     │ b      │ c     │ second
+ <span class="token number">1</span> │     <span class="token number">0</span> │    <span class="token number">15</span> │  <span class="token number">0.5000</span> │  <span class="token number">4.0000</span> │ b     │ a      │ a     │ third
+ <span class="token number">2</span> │     <span class="token number">7</span> │    <span class="token number">17</span> │  <span class="token number">0.7000</span> │  <span class="token number">6.0000</span> │ b     │ c      │ a     │ third
+───┴───────┴───────┴─────────┴─────────┴───────┴────────┴───────┴────────
+</code></pre></div><p>The command <code>take</code> is very handy, specially if we mix it with other commands.
+Let's say that we want to extract all rows for the first duplicated element for
+column <code>first</code>. In order to do that, we can use the command <code>dataframe arg-unique</code> as shown in the next example</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> <span class="token builtin class-name">let</span> indices <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token variable">$df</span>.first <span class="token operator">|</span> dataframe arg-unique<span class="token punctuation">)</span>
+<span class="token operator">&gt;</span> <span class="token variable">$df</span> <span class="token operator">|</span> dataframe take <span class="token variable">$indices</span>
+
+───┬───────┬───────┬─────────┬─────────┬───────┬────────┬───────┬────────
+ <span class="token comment"># │ int_1 │ int_2 │ float_1 │ float_2 │ first │ second │ third │  word</span>
+───┼───────┼───────┼─────────┼─────────┼───────┼────────┼───────┼────────
+ <span class="token number">0</span> │     <span class="token number">1</span> │    <span class="token number">11</span> │  <span class="token number">0.1000</span> │  <span class="token number">1.0000</span> │ a     │ b      │ c     │ first
+ <span class="token number">1</span> │     <span class="token number">4</span> │    <span class="token number">14</span> │  <span class="token number">0.4000</span> │  <span class="token number">3.0000</span> │ b     │ a      │ c     │ second
+ <span class="token number">2</span> │     <span class="token number">8</span> │    <span class="token number">18</span> │  <span class="token number">0.8000</span> │  <span class="token number">7.0000</span> │ c     │ c      │ b     │ eight
+───┴───────┴───────┴─────────┴─────────┴───────┴────────┴───────┴────────
+</code></pre></div><p>Or what if we want to create a new sorted dataframe using a column in specific.
+We can use the <code>dataframe arg-sort</code> to accomplish that. In the next example we
+can sort the dataframe by the column <code>word</code></p> <blockquote><p>Note. The same result could be accomplished using the command <code>sort</code></p></blockquote> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> <span class="token builtin class-name">let</span> indices <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token variable">$df</span>.word <span class="token operator">|</span> dataframe arg-sort<span class="token punctuation">)</span>
+<span class="token operator">&gt;</span> <span class="token variable">$df</span> <span class="token operator">|</span> dataframe take <span class="token variable">$indices</span>
+
+───┬───────┬───────┬─────────┬─────────┬───────┬────────┬───────┬────────
+ <span class="token comment"># │ int_1 │ int_2 │ float_1 │ float_2 │ first │ second │ third │  word</span>
+───┼───────┼───────┼─────────┼─────────┼───────┼────────┼───────┼────────
+ <span class="token number">0</span> │     <span class="token number">8</span> │    <span class="token number">18</span> │  <span class="token number">0.8000</span> │  <span class="token number">7.0000</span> │ c     │ c      │ b     │ eight
+ <span class="token number">1</span> │     <span class="token number">1</span> │    <span class="token number">11</span> │  <span class="token number">0.1000</span> │  <span class="token number">1.0000</span> │ a     │ b      │ c     │ first
+ <span class="token number">2</span> │     <span class="token number">9</span> │    <span class="token number">19</span> │  <span class="token number">0.9000</span> │  <span class="token number">8.0000</span> │ c     │ c      │ b     │ ninth
+ <span class="token number">3</span> │     <span class="token number">0</span> │    <span class="token number">10</span> │  <span class="token number">0.0000</span> │  <span class="token number">9.0000</span> │ c     │ c      │ b     │ ninth
+ <span class="token number">4</span> │     <span class="token number">2</span> │    <span class="token number">12</span> │  <span class="token number">0.2000</span> │  <span class="token number">1.0000</span> │ a     │ b      │ c     │ second
+ <span class="token number">5</span> │     <span class="token number">4</span> │    <span class="token number">14</span> │  <span class="token number">0.4000</span> │  <span class="token number">3.0000</span> │ b     │ a      │ c     │ second
+ <span class="token number">6</span> │     <span class="token number">6</span> │    <span class="token number">16</span> │  <span class="token number">0.6000</span> │  <span class="token number">5.0000</span> │ b     │ a      │ a     │ second
+ <span class="token number">7</span> │     <span class="token number">3</span> │    <span class="token number">13</span> │  <span class="token number">0.3000</span> │  <span class="token number">2.0000</span> │ a     │ b      │ c     │ third
+ <span class="token number">8</span> │     <span class="token number">0</span> │    <span class="token number">15</span> │  <span class="token number">0.5000</span> │  <span class="token number">4.0000</span> │ b     │ a      │ a     │ third
+ <span class="token number">9</span> │     <span class="token number">7</span> │    <span class="token number">17</span> │  <span class="token number">0.7000</span> │  <span class="token number">6.0000</span> │ b     │ c      │ a     │ third
+───┴───────┴───────┴─────────┴─────────┴───────┴────────┴───────┴────────
+</code></pre></div><p>And finally, we can create new Series by setting a new value in the marked
+indices. Have a look at the next command</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> <span class="token builtin class-name">let</span> indices <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">0</span> <span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">|</span> dataframe to-series<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token operator">&gt;</span> <span class="token variable">$df</span>.int_1 <span class="token operator">|</span> dataframe set-with-idx <span class="token number">123</span> --indices <span class="token variable">$indices</span>
+
+───┬─────────────
+ <span class="token comment"># │ int_1 (i64)</span>
+───┼─────────────
+ <span class="token number">0</span> │         <span class="token number">123</span>
+ <span class="token number">1</span> │           <span class="token number">2</span>
+ <span class="token number">2</span> │         <span class="token number">123</span>
+ <span class="token number">3</span> │           <span class="token number">4</span>
+ <span class="token number">4</span> │           <span class="token number">0</span>
+ <span class="token number">5</span> │           <span class="token number">6</span>
+ <span class="token number">6</span> │           <span class="token number">7</span>
+ <span class="token number">7</span> │           <span class="token number">8</span>
+ <span class="token number">8</span> │           <span class="token number">9</span>
+ <span class="token number">9</span> │           <span class="token number">0</span>
+───┴─────────────
+</code></pre></div><h2 id="unique-values"><a href="#unique-values" class="header-anchor">#</a> Unique values</h2> <p>Another operation that can be done with <code>Series</code> is to search for unique values
+in a list or column. Lets use again the first dataframe we created to test
+these operations.</p> <p>The first and most common operation that we have is <code>value_counts</code>. This
+command calculates a count of the unique values that exist in a Series. For
+example, we can use it to count how many occurrences we have in the column
+<code>first</code></p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> <span class="token variable">$df</span>.first <span class="token operator">|</span> dataframe value-counts
+
+───┬───────┬────────
+ <span class="token comment"># │ first │ counts</span>
+───┼───────┼────────
+ <span class="token number">0</span> │ b     │      <span class="token number">4</span>
+ <span class="token number">1</span> │ c     │      <span class="token number">3</span>
+ <span class="token number">2</span> │ a     │      <span class="token number">3</span>
+───┴───────┴────────
+</code></pre></div><p>As expected, the command returns a new dataframe that can be used to do more
+queries.</p> <p>Continuing with our exploration of <code>Series</code>, the next thing that we can do is
+to only get the unique unique values from a series, like this</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> <span class="token variable">$df</span>.first <span class="token operator">|</span> dataframe unique
+
+───┬─────────────
+ <span class="token comment"># │ first (str)</span>
+───┼─────────────
+ <span class="token number">0</span> │ c
+ <span class="token number">1</span> │ b
+ <span class="token number">2</span> │ a
+───┴─────────────
+</code></pre></div><p>Or we can get a mask that we can use to filter out the rows where data is
+unique or duplicated. For example, we can select the rows for unique values
+in column <code>word</code></p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> <span class="token variable">$df</span> <span class="token operator">|</span> dataframe filter-with <span class="token punctuation">(</span><span class="token variable">$df</span>.word <span class="token operator">|</span> dataframe is-unique<span class="token punctuation">)</span>
+
+───┬───────┬───────┬─────────┬─────────┬───────┬────────┬───────┬───────
+ <span class="token comment"># │ int_1 │ int_2 │ float_1 │ float_2 │ first │ second │ third │ word</span>
+───┼───────┼───────┼─────────┼─────────┼───────┼────────┼───────┼───────
+ <span class="token number">0</span> │     <span class="token number">1</span> │    <span class="token number">11</span> │  <span class="token number">0.1000</span> │  <span class="token number">1.0000</span> │ a     │ b      │ c     │ first
+ <span class="token number">1</span> │     <span class="token number">8</span> │    <span class="token number">18</span> │  <span class="token number">0.8000</span> │  <span class="token number">7.0000</span> │ c     │ c      │ b     │ eight
+───┴───────┴───────┴─────────┴─────────┴───────┴────────┴───────┴───────
+</code></pre></div><p>Or all the duplicated ones</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> <span class="token variable">$df</span> <span class="token operator">|</span> dataframe filter-with <span class="token punctuation">(</span><span class="token variable">$df</span>.word <span class="token operator">|</span> dataframe is-duplicated<span class="token punctuation">)</span>
+
+───┬───────┬───────┬─────────┬─────────┬───────┬────────┬───────┬────────
+ <span class="token comment"># │ int_1 │ int_2 │ float_1 │ float_2 │ first │ second │ third │  word</span>
+───┼───────┼───────┼─────────┼─────────┼───────┼────────┼───────┼────────
+ <span class="token number">0</span> │     <span class="token number">2</span> │    <span class="token number">12</span> │  <span class="token number">0.2000</span> │  <span class="token number">1.0000</span> │ a     │ b      │ c     │ second
+ <span class="token number">1</span> │     <span class="token number">3</span> │    <span class="token number">13</span> │  <span class="token number">0.3000</span> │  <span class="token number">2.0000</span> │ a     │ b      │ c     │ third
+ <span class="token number">2</span> │     <span class="token number">4</span> │    <span class="token number">14</span> │  <span class="token number">0.4000</span> │  <span class="token number">3.0000</span> │ b     │ a      │ c     │ second
+ <span class="token number">3</span> │     <span class="token number">0</span> │    <span class="token number">15</span> │  <span class="token number">0.5000</span> │  <span class="token number">4.0000</span> │ b     │ a      │ a     │ third
+ <span class="token number">4</span> │     <span class="token number">6</span> │    <span class="token number">16</span> │  <span class="token number">0.6000</span> │  <span class="token number">5.0000</span> │ b     │ a      │ a     │ second
+ <span class="token number">5</span> │     <span class="token number">7</span> │    <span class="token number">17</span> │  <span class="token number">0.7000</span> │  <span class="token number">6.0000</span> │ b     │ c      │ a     │ third
+ <span class="token number">6</span> │     <span class="token number">9</span> │    <span class="token number">19</span> │  <span class="token number">0.9000</span> │  <span class="token number">8.0000</span> │ c     │ c      │ b     │ ninth
+ <span class="token number">7</span> │     <span class="token number">0</span> │    <span class="token number">10</span> │  <span class="token number">0.0000</span> │  <span class="token number">9.0000</span> │ c     │ c      │ b     │ ninth
+───┴───────┴───────┴─────────┴─────────┴───────┴────────┴───────┴────────
+</code></pre></div><h2 id="dataframes-commands"><a href="#dataframes-commands" class="header-anchor">#</a> Dataframes commands</h2> <p>So far we have seen quite a few operations that can be done using <code>DataFrame</code>s
+commands. However, the commands we have used so far, are not all the commands
+available to work with data and be assured that there will be more as the
+feature becomes more stable.</p> <p>The next list show the available dataframe commands with their description, and
+whenever possible, their analogous nushell command.</p> <table><thead><tr><th>Command Name</th> <th>Applies To</th> <th>Description</th> <th>Nushell Equivalent</th></tr></thead> <tbody><tr><td>aggregate</td> <td>DataFrame, GroupBy, Series</td> <td>Performs an aggregation operation on a dataframe, groupby or series object</td> <td>math</td></tr> <tr><td>all-false</td> <td>Series</td> <td>Returns true if all values are false</td> <td></td></tr> <tr><td>all-true</td> <td>Series</td> <td>Returns true if all values are true</td> <td>all?</td></tr> <tr><td>arg-max</td> <td>Series</td> <td>Return index for max value in series</td> <td></td></tr> <tr><td>arg-min</td> <td>Series</td> <td>Return index for min value in series</td> <td></td></tr> <tr><td>arg-sort</td> <td>Series</td> <td>Returns indexes for a sorted series</td> <td></td></tr> <tr><td>arg-true</td> <td>Series</td> <td>Returns indexes where values are true</td> <td></td></tr> <tr><td>arg-unique</td> <td>Series</td> <td>Returns indexes for unique values</td> <td></td></tr> <tr><td>column</td> <td>DataFrame</td> <td>Returns the selected column as Series</td> <td>get</td></tr> <tr><td>count-null</td> <td>Series</td> <td>Counts null values</td> <td></td></tr> <tr><td>count-unique</td> <td>Series</td> <td>Counts unique value</td> <td></td></tr> <tr><td>drop</td> <td>DataFrame</td> <td>Creates a new dataframe by dropping the selected columns</td> <td>drop</td></tr> <tr><td>drop-duplicates</td> <td>DataFrame</td> <td>Drops duplicate values in dataframe</td> <td></td></tr> <tr><td>drop-nulls</td> <td>DataFrame, Series</td> <td>Drops null values in dataframe</td> <td></td></tr> <tr><td>dtypes</td> <td>DataFrame</td> <td>Show dataframe data types</td> <td></td></tr> <tr><td>filter-with</td> <td>DataFrame</td> <td>Filters dataframe using a mask as reference</td> <td></td></tr> <tr><td>first</td> <td>DataFrame</td> <td>Creates new dataframe with first rows</td> <td>first</td></tr> <tr><td>get</td> <td>DataFrame</td> <td>Creates dataframe with the selected columns</td> <td>get</td></tr> <tr><td>group-by</td> <td>DataFrame</td> <td>Creates a groupby object that can be used for other aggregations</td> <td>group-by</td></tr> <tr><td>is-duplicated</td> <td>Series</td> <td>Creates mask indicating duplicated values</td> <td></td></tr> <tr><td>is-in</td> <td>Series</td> <td>Checks if elements from a series are contained in right series</td> <td>in</td></tr> <tr><td>is-not-null</td> <td>Series</td> <td>Creates mask where value is not null</td> <td></td></tr> <tr><td>is-null</td> <td>Series</td> <td>Creates mask where value is null</td> <td><code>&lt;column_name&gt; == $nothing</code></td></tr> <tr><td>is-unique</td> <td>Series</td> <td>Creates mask indicating unique values</td> <td></td></tr> <tr><td>join</td> <td>DataFrame</td> <td>Joins a dataframe using columns as reference</td> <td></td></tr> <tr><td>last</td> <td>DataFrame</td> <td>Creates new dataframe with last rows</td> <td>last</td></tr> <tr><td>list</td> <td></td> <td>Lists stored dataframes</td> <td></td></tr> <tr><td>melt</td> <td>DataFrame</td> <td>Unpivot a DataFrame from wide to long format</td> <td></td></tr> <tr><td>not</td> <td>Series  Inverts boolean mask</td> <td></td> <td></td></tr> <tr><td>open</td> <td></td> <td>Loads dataframe form csv file</td> <td>open</td></tr> <tr><td>pivot</td> <td>GroupBy</td> <td>Performs a pivot operation on a groupby object</td> <td>pivot</td></tr> <tr><td>rename</td> <td>Series</td> <td>Renames a series</td> <td>rename</td></tr> <tr><td>sample</td> <td>DataFrame</td> <td>Create sample dataframe</td> <td></td></tr> <tr><td>select</td> <td>DataFrame</td> <td>Creates a new dataframe with the selected columns</td> <td>select</td></tr> <tr><td>set</td> <td>Series</td> <td>Sets value where given mask is true</td> <td></td></tr> <tr><td>set-with-idx</td> <td>Series</td> <td>Sets value in the given index</td> <td></td></tr> <tr><td>shift</td> <td>Series</td> <td>Shifts the values by a given period</td> <td></td></tr> <tr><td>show</td> <td>DataFrame</td> <td>Converts a section of the dataframe to a Table or List value</td> <td></td></tr> <tr><td>slice</td> <td>DataFrame</td> <td>Creates new dataframe from a slice of rows</td> <td></td></tr> <tr><td>sort</td> <td>DataFrame, Series</td> <td>Creates new sorted dataframe or series</td> <td>sort</td></tr> <tr><td>take</td> <td>DataFrame, Series</td> <td>Creates new dataframe using the given indices</td> <td></td></tr> <tr><td>to-csv</td> <td>DataFrame</td> <td>Saves dataframe to csv file</td> <td>to csv</td></tr> <tr><td>to-df</td> <td></td> <td>Converts a pipelined Table or List into Dataframe</td> <td></td></tr> <tr><td>to-dummies</td> <td>DataFrame</td> <td>Creates a new dataframe with dummy variables</td> <td></td></tr> <tr><td>to-parquet</td> <td>DataFrame</td> <td>Saves dataframe to parquet file</td> <td></td></tr> <tr><td>to-series</td> <td></td> <td>Converts a pipelined List into a polars series</td> <td></td></tr> <tr><td>unique</td> <td>Series</td> <td>Returns unique values from a series</td> <td>uniq</td></tr> <tr><td>value-counts</td> <td>Series</td> <td>Returns a dataframe with the counts for unique values in series</td> <td></td></tr> <tr><td>where</td> <td>DataFrame</td> <td>Filter dataframe to match the condition</td> <td>where</td></tr> <tr><td>with-column</td> <td>DataFrame</td> <td>Adds a series to the dataframe</td> <td><code>insert &lt;column_name&gt; &lt;value&gt; | update &lt;column_name&gt; { &lt;new_value&gt; }</code></td></tr></tbody></table> <h2 id="future-of-dataframes"><a href="#future-of-dataframes" class="header-anchor">#</a> Future of Dataframes</h2> <p>We hope that by the end of this page you have a solid grasp of how to use the
+dataframe commands. As you can see they offer powerful operations that can
+help you process data faster and natively.</p> <p>However, the future of these dataframes is still very experimental. New
+commands and tools that take advantage of these commands will be added as they
+mature. For example, the next step for dataframes is the introduction of Lazy
+Dataframes. These will allow you to define complex data operations that will be
+executed until you decide to &quot;finish&quot; the pipe. This will give nushell the
+chance to select the optimal plan to query the data you would be asking for.</p> <p>Keep visiting this book in order to check the new things happening to
+dataframes and how they can help you process data faster and efficiently.</p></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/nushell/nushell.github.io/edit/master/book/dataframes.md" target="_blank" rel="noopener noreferrer">Edit this page on GitHub</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/book/plugins.html" class="prev">
+        Plugins
+      </a></span> <span class="next"><a href="/book/coming_from_bash.html">
+        Coming from Bash
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.e89946ee.js" defer></script><script src="/assets/js/9.a1d290eb.js" defer></script><script src="/assets/js/2.4b7b0434.js" defer></script><script src="/assets/js/298.b0a08b5f.js" defer></script>
+  </body>
+</html>
